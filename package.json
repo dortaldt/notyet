@@ -1,0 +1,22 @@
+{
+  "name": "notyet",
+  "version": "1.0.0",
+  "description": "NotYet app - give quick answer to repeating questions",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dortaldt/notyet.git"
+  },
+  "author": "Dor Tal",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/dortaldt/netyet/issues"
+  },
+  "homepage": "https://github.com/dortaldt/netyet#readme",
+  "dependencies": {
+    "express": "^4.16.0"
+  }
+}

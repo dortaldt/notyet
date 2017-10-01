@@ -1,0 +1,286 @@
+body,
+html {
+	font-family: 'Roboto', sans-serif;
+	font-size:16px;
+	color: #383838;
+	background: linear-gradient(to bottom right, #fff65e, #fffaaa);
+}
+
+form {
+	justify-content: space-around;
+	margin: auto;
+}
+
+button,
+input[type=submit] {
+    padding: 1rem 4rem;
+    font-size: 1.5rem;
+    line-height: 2rem;
+    border: none;
+    color: white;
+    border-radius: 4px;
+    box-shadow: 1px 6px 12px rgba(0,0,0,0.25);
+    background-color: #383838;
+    margin: 16px auto
+}
+
+button:active,
+input[type=submit]:active {
+	box-shadow: none;
+	background-color:black;
+}
+
+label {
+	font-size: 1.5rem;
+	display: block;
+	color: #848484;
+}
+
+input[type=text] {
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+	display: block;
+	font-size: 2rem;
+	line-height: 3rem;
+	width: 100%;
+	border-bottom: 2px solid #691777;
+	border-top:0px;
+	border-left: 0px;
+	border-right: 0px;
+}
+
+.dis-flex {
+	display: flex;
+	flex-wrap: wrap;
+}
+
+.flex-col {
+	flex-direction: column;
+}
+
+.main-header {
+	display: none;
+	max-width: 300px;
+	text-align: left;
+	margin: auto;
+}
+
+.site-header {
+	width: 100%;
+}
+
+.title-que-cont{
+	font-size: 8rem;
+	flex-direction: column;
+	justify-content: space-evenly;
+	text-align: left;
+	font-family: 'Roboto slab';
+	margin: auto;
+}
+
+.wraper{
+	height: 100%;
+	display: flex;
+	flex-wrap: wrap;
+}
+
+.loader-cont {
+	height: 4rem;
+	line-height: 4rem ;
+	font-size: 3rem;
+	display: flex;
+	justify-content: space-around;
+	font-style: italic;
+}
+
+.loader {
+	color: #383838;
+	display: none;
+	font-weight: 700;
+}
+
+.content {
+	font-size: 2rem;
+	margin: auto;
+	text-align: center;
+	max-width: 800px;
+	height: 90%;
+	justify-content: space-around;
+}
+
+.site-header {
+	justify-content: space-between;
+	flex-wrap: wrap-reverse;
+}
+
+
+.show {
+	display: block;
+}
+
+.no {
+    border: 12px solid #2f2f2f;
+    color: #2f2f2f;
+    font-size: 5rem;
+    border-radius: 360px;
+    height: 256px;
+    width: 256px;
+    line-height: 16rem;
+    text-align: center;
+    vertical-align: middle;
+    margin: auto;
+    background-color: white;
+    box-shadow: 1px 5px 10px rgba(0,0,0,0.25);
+}
+
+.full-width {
+	width: 100%;
+}
+
+.update-wrap {
+	font-size: 1.5rem;
+}
+#noo {
+    font-family: 'Roboto slab';
+	font-size: 4rem;
+	line-height: 1;
+	font-weight: 700;
+	margin-bottom: 0.7rem;
+	width: 100%;
+}
+
+#no-upload {
+	color: transparent;
+	border: 12px solid transparent;
+	background-color: transparent;
+	box-shadow: none;
+}
+
+.card {
+    padding: 2rem;
+    background-color: white;
+    width: 100%;
+    border-radius: 8px;
+    box-shadow: 1px 6px 12px rgba(0,0,0,0.25);
+}
+
+footer {
+	text-align: center;
+    bottom: 0;
+    width: 100%;
+}
+
+.copy-link {
+    background-color: transparent;
+    color: #383838;
+    box-shadow: none;
+    font-size: 1rem;
+    text-decoration: underline
+}
+
+.links {
+	font-size: 1rem;
+}
+
+@media only screen and (max-device-width: 770px) {
+    body {
+        font-size: 20px;
+    }
+
+    .content {
+    	max-width: 100%;
+    	margin: auto 2rem;
+    }
+
+    .site-header {
+    	font-size: 5rem;
+    }
+
+    .main-header {
+    	max-width: 100%;
+    	text-align: center;
+    }
+
+    .no {
+	    border: 16px solid;
+	    font-size: 12rem;
+	    border-radius: 512px;
+	    height: 512px;
+	    width: 512px;
+	    line-height: 32rem;
+	    text-align: center;
+	    vertical-align: middle;
+    }
+
+    .loader {
+    	font-size: 6rem;
+		line-height: 6rem;
+    }
+
+    .btn-cont {
+    	margin-top: 3rem;
+    }
+
+/**************************/
+/********* Form ***********/
+/**************************/
+
+    form {
+    	font-size: 3rem;
+    	margin: 2rem;
+    }
+
+    input[type=text] {
+    	font-size: 5rem;
+    }
+
+    label {
+	font-size: 3rem;
+	display: block;
+	}
+
+	button,
+	input[type=submit] {
+    padding: 3rem 4rem;
+    font-size: 3rem;
+	}
+
+/**************************/
+/***** Dispaly class ******/
+/**************************/
+
+	.no-mob {
+		display: none;
+	}
+
+	.card {
+    padding: 2rem;
+	}	
+
+	.copy-link {
+		font-size: 2.5rem;
+	}
+
+	.title-que-cont {
+		font-size: 12rem;
+	}
+
+    #noo {
+    	font-size: 6rem;
+    	height: 14rem;
+    	margin-top: 3rem;
+    	font-weight: 400;
+    }
+
+    #last, #update {
+    	font-size: 2rem;
+    }
+
+    .links {
+		font-size: 2.5rem;
+	}	
+
+	footer {
+		font-size: 2rem;
+	}
+}
