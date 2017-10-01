@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Home</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Home</h1>
+
+    
+
+
+
+    
+
+
+    <h3> </h3>
+
+
+
+
+
+
+
+
+
+
+    
+
+
+
+
+    <section>
+        <article><h1>Cloudinary</h1><p>Cloudinary is a cloud service that offers a solution to a web application's entire image management pipeline.</p>
+<p>Easily upload images to the cloud. Automatically perform smart image resizing, cropping and conversion without installing any complex software. Integrate Facebook or Twitter profile image extraction in a snap, in any dimension and style to match your website’s graphics requirements. Images are seamlessly delivered through a fast CDN, and much much more.</p>
+<p>Cloudinary offers comprehensive APIs and administration capabilities and is easy to integrate with any web application, existing or new.</p>
+<p>Cloudinary provides URL and HTTP based APIs that can be easily integrated with any Web development framework.</p>
+<p>For Node.js, Cloudinary provides an extension for simplifying the integration even further.</p>
+<h2>Getting started guide</h2><p><img src="http://res.cloudinary.com/cloudinary/image/upload/see_more_bullet.png" alt="">  <strong>Take a look at our <a href="http://cloudinary.com/documentation/node_integration#getting_started_guide">Getting started guide for Node.js</a></strong>.</p>
+<h2>Setup</h2><p>npm install cloudinary</p>
+<h2>Try it right away</h2><p>Sign up for a <a href="https://cloudinary.com/users/register/free">free account</a> so you can try out image transformations and seamless image delivery through CDN.</p>
+<p><em>Note: Replace <code>demo</code> in all the following examples with your Cloudinary's <code>cloud name</code>.</em></p>
+<p>Accessing an uploaded image with the <code>sample</code> public ID through a CDN:</p>
+<pre class="prettyprint source"><code>http://res.cloudinary.com/demo/image/upload/sample.jpg</code></pre><p><img src="https://res.cloudinary.com/demo/image/upload/w_0.4/sample.jpg" alt="Sample" title="Sample"></p>
+<p>Generating a 150x100 version of the <code>sample</code> image and downloading it through a CDN:</p>
+<pre class="prettyprint source"><code>http://res.cloudinary.com/demo/image/upload/w_150,h_100,c_fill/sample.jpg</code></pre><p><img src="https://res.cloudinary.com/demo/image/upload/w_150,h_100,c_fill/sample.jpg" alt="Sample 150x100" title="Sample 150x100"></p>
+<p>Converting to a 150x100 PNG with rounded corners of 20 pixels:</p>
+<pre class="prettyprint source"><code>http://res.cloudinary.com/demo/image/upload/w_150,h_100,c_fill,r_20/sample.png</code></pre><p><img src="https://res.cloudinary.com/demo/image/upload/w_150,h_100,c_fill,r_20/sample.png" alt="Sample 150x150 Rounded PNG" title="Sample 150x150 Rounded PNG"></p>
+<p>For plenty more transformation options, see our <a href="http://cloudinary.com/documentation/image_transformations">image transformations documentation</a>.</p>
+<p>Generating a 120x90 thumbnail based on automatic face detection of the Facebook profile picture of Bill Clinton:</p>
+<pre class="prettyprint source"><code>http://res.cloudinary.com/demo/image/facebook/c_thumb,g_face,h_90,w_120/billclinton.jpg</code></pre><p><img src="https://res.cloudinary.com/demo/image/facebook/c_thumb,g_face,h_90,w_120/billclinton.jpg" alt="Facebook 90x120" title="Facebook 90x200"></p>
+<p>For more details, see our documentation for embedding <a href="http://cloudinary.com/documentation/facebook_profile_pictures">Facebook</a> and <a href="http://cloudinary.com/documentation/twitter_profile_pictures">Twitter</a> profile pictures.</p>
+<h2>Usage</h2><h3>Configuration</h3><p>Each request for building a URL of a remote cloud resource must have the <code>cloud_name</code> parameter set.
+Each request to our secure APIs (e.g., image uploads, eager sprite generation) must have the <code>api_key</code> and <code>api_secret</code> parameters set. See <a href="http://cloudinary.com/documentation/api_and_access_identifiers">API, URLs and access identifiers</a> for more details.</p>
+<p>Setting the <code>cloud_name</code>, <code>api_key</code> and <code>api_secret</code> parameters can be done either directly in each call to a Cloudinary method, by calling the cloudinary.config(), or by using the CLOUDINARY_URL environment variable.</p>
+<h3>Overriding the request agent</h3><p>To override the request agent pass the agent into any method that makes a
+request and it will be used instead of the normal https agent. e.g</p>
+<pre class="prettyprint source lang-js"><code>
+cloudinary.uploader.upload_stream(
+  function(result) { console.log(result); },
+  { agent: myAgent }
+);</code></pre><h3>Embedding and transforming images</h3><p>Any image uploaded to Cloudinary can be transformed and embedded using powerful view helper methods:</p>
+<p>The following example generates the url for accessing an uploaded <code>sample</code> image while transforming it to fill a 100x150 rectangle:</p>
+<pre class="prettyprint source"><code>cloudinary.url(&quot;sample.jpg&quot;, {width: 100, height: 150, crop: &quot;fill&quot;})</code></pre><p>Another example, emedding a smaller version of an uploaded image while generating a 90x90 face detection based thumbnail:</p>
+<pre class="prettyprint source"><code>cloudinary.url(&quot;woman.jpg&quot;, {width: 90, height: 90, crop: &quot;thumb&quot;, gravity: &quot;face&quot;})</code></pre><p>You can provide either a Facebook name or a numeric ID of a Facebook profile or a fan page.</p>
+<p>Embedding a Facebook profile to match your graphic design is very simple:</p>
+<pre class="prettyprint source"><code>cloudinary.url(&quot;billclinton.jpg&quot;, {width: 90, height: 130, type: &quot;facebook&quot;, crop: &quot;fill&quot;, gravity: &quot;north_west&quot;})</code></pre><p>Same goes for Twitter:</p>
+<pre class="prettyprint source"><code>cloudinary.url(&quot;billclinton.jpg&quot;, {type: &quot;twitter_name&quot;})</code></pre><p><img src="http://res.cloudinary.com/cloudinary/image/upload/see_more_bullet.png" alt=""> <strong>See <a href="http://cloudinary.com/documentation/node_image_manipulation">our documentation</a> for more information about displaying and transforming images in Node.js</strong>.</p>
+<h3>Upload</h3><p>Assuming you have your Cloudinary configuration parameters defined (<code>cloud_name</code>, <code>api_key</code>, <code>api_secret</code>), uploading to Cloudinary is very simple.</p>
+<p>The following example uploads a local JPG to the cloud:</p>
+<pre class="prettyprint source"><code> var cloudinary = require('cloudinary')
+
+cloudinary.uploader.upload(&quot;my_picture.jpg&quot;, function(result) { console.log(result) })</code></pre><p>Below is an example of an upload's result:</p>
+<pre class="prettyprint source"><code> { public_id: '4srvcynxrf5j87niqcx6w',
+   version: 1340625837,
+   signature: '01234567890abcdef01234567890abcdef012345',
+   width: 200,
+   height: 200,
+   format: 'jpg',
+   resource_type: 'image',
+   url: 'http://res.cloudinary.com/demo/image/upload/v1340625837/4srvcynxrf5j87niqcx6w.jpg',
+   secure_url: 'https://res.cloudinary.com/demo/image/upload/v1340625837/4srvcynxrf5j87niqcx6w.jpg' }</code></pre><p>The uploaded image is assigned a randomly generated public ID. The image is immediately available for download through a CDN:</p>
+<pre class="prettyprint source"><code>cloudinary.url(&quot;abcfrmo8zul1mafopawefg.jpg&quot;)
+
+http://res.cloudinary.com/demo/image/upload/abcfrmo8zul1mafopawefg.jpg</code></pre><p>You can also specify your own public ID:</p>
+<pre class="prettyprint source"><code>cloudinary.uploader.upload(&quot;http://www.example.com/image.jpg&quot;, function(result) { console.log(result) }, {public_id: 'sample_remote'})
+
+cloudinary.url(&quot;sample_remote.jpg&quot;)
+
+http://res.cloudinary.com/demo/image/upload/sample_remote.jpg</code></pre><p><img src="http://res.cloudinary.com/cloudinary/image/upload/see_more_bullet.png" alt=""> <strong>See <a href="http://cloudinary.com/documentation/node_image_upload">our documentation</a> for plenty more options of uploading to the cloud from your Node.js code or directly from the browser</strong>.</p>
+<h3>cloudinary.upload_stream</h3><p>You can use cloudinary.upload_stream to write to the uploader as a stream:</p>
+<pre class="prettyprint source"><code>var fs = require('fs');
+var stream = cloudinary.uploader.upload_stream(function(result) { console.log(result); });
+var file_reader = fs.createReadStream('my_picture.jpg', {encoding: 'binary'}).on('data', stream.write).on('end', stream.end);</code></pre><h4>Version 1.1 upload_stream change notes</h4><p>The <code>upload_stream</code> method was modified to return a <code>Transform</code> stream object, we advise to change the <code>on('data')</code> and <code>on('end')</code> to pipe API:</p>
+<pre class="prettyprint source"><code>var file_reader = fs.createReadStream('my_picture.jpg').pipe(stream);</code></pre><p>if you still need to use event chanining, you can wrap <code>stream.write</code> and <code>stream.end</code> with wrapper functions</p>
+<pre class="prettyprint source"><code>var file_reader = fs.createReadStream('my_picture.jpg', {encoding: 'binary'}).
+  on('data', function(data){stream.write(data)}).on('end', function(){stream.end()});</code></pre><h3>cloudinary.image</h3><p>Returns an html image tag pointing to Cloudinary.</p>
+<p>Usage:</p>
+<pre class="prettyprint source"><code>cloudinary.image(&quot;sample&quot;, {format: &quot;png&quot;, width: 100, height: 100, crop: &quot;fill&quot;})
+
+// &lt;img src='http://res.cloudinary.com/demo/image/upload/c_fill,h_100,w_100/sample.png' height='100' width='100'/></code></pre><h3>Samples</h3><p>You can find our simple and ready-to-use samples projects, along with documentation in the <a href="https://github.com/cloudinary/cloudinary_npm/tree/master/samples">samples folder</a>.
+Please consult with the <a href="https://github.com/cloudinary/cloudinary_npm/blob/master/samples/README.md">README file</a>, for usage and explanations.</p>
+<h2>Additional resources</h2><p>Additional resources are available at:</p>
+<ul>
+<li><a href="http://cloudinary.com">Website</a></li>
+<li><a href="http://cloudinary.com/documentation">Documentation</a></li>
+<li><a href="http://support.cloudinary.com/forums">Knowledge Base</a></li>
+<li><a href="http://cloudinary.com/documentation/node_integration">Documentation for Node.js integration</a></li>
+<li><a href="http://cloudinary.com/documentation/node_image_upload">Node.js image upload documentation</a></li>
+<li><a href="http://cloudinary.com/documentation/node_image_manipulation">Node.js image manipulation documentation</a></li>
+<li><a href="http://cloudinary.com/documentation/image_transformations">Image transformations documentation</a></li>
+</ul>
+<h2>Run test</h2><pre class="prettyprint source"><code>npm run test</code></pre><h2>Support</h2><p>You can <a href="https://github.com/cloudinary/cloudinary_npm/issues">open an issue through GitHub</a>.</p>
+<p>Contact us <a href="http://cloudinary.com/contact">http://cloudinary.com/contact</a></p>
+<p>Stay tuned for updates, tips and tutorials: <a href="http://cloudinary.com/blog">Blog</a>, <a href="https://twitter.com/cloudinary">Twitter</a>, <a href="http://www.facebook.com/Cloudinary">Facebook</a>.</p>
+<h2>License</h2><p>Released under the MIT license.</p>
+<p>Test resources include the video <a href="https://vimeo.com/27172301">Cloud Book Study</a>
+which was created by <a href="https://vimeo.com/heidineilson">Heidi Neilson</a>
+and is distributed under the Creative commons - attribution license (CC BY 3.0)</p></article>
+    </section>
+
+
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Modules</h3><ul><li><a href="module-auth_token.html">auth_token</a></li><li><a href="module-utils.html">utils</a></li><li><a href="module-utils.html#.generate_auth_token">generate_auth_token</a></li></ul><h3>Global</h3><ul><li><a href="global.html#option_consume">option_consume</a></li><li><a href="global.html#video">video</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.4.3</a> on Wed Feb 15 2017 11:30:45 GMT+0200 (IST)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

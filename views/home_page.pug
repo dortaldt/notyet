@@ -1,0 +1,22 @@
+html
+  include includes/head.pug
+  body
+    .wraper
+      .content.dis-flex
+        .site-header.dis-flex
+          .main-header.no-mob
+            span
+              h1 Let them answer themself
+          .title-que-cont.dis-flex
+            span.title-que Not Yet.
+        .card.dis-flex
+          form#form1.dis-flex.flex-col(action='../pages/yet.html')
+            label(for='question') What is the question they're keep nagging you about?
+            input#question(type='text', name='que', value='Are we there yet??')
+            button(type='submit', form='form1', value='Submit') Create page!
+            // <input type="submit" value="Crete page!">
+      footer
+        | this is the end my friend, check 
+        a(href='../index.html#page-2')
+          b My works
+  script(type='text/javascript', src='../js/scripts.js')
