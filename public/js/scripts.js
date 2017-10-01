@@ -37,31 +37,6 @@ var animateText = function() {
 
 printUpdate()
 
-//Get paremeters from URL:
-
-function getParameterByName(name, url) {
-    if (!url) url = window.location.href;
-    name = name.replace(/[\[\]]/g, "\\$&");
-    var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
-        results = regex.exec(url);
-    if (!results) return null;
-    if (!results[2]) return '';
-    return decodeURIComponent(results[2].replace(/\+/g, " "));
-};
-var queVal = getParameterByName('que');
-var ansVal = getParameterByName('ans');
-
-//change the question and title values:
-
-var changeQ = function(){
-	var que = document.getElementById('noo');
-	var ans = document.getElementById('wait');
-	que.innerHTML = queVal;
-	// ans.innerHTML = ansVal;
-	document.title = queVal;
-};
-
-changeQ()
 
 
 
