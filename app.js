@@ -16,10 +16,10 @@ app.get('/', function (req, res) {
 	var ans_icon = ''
 	function choseIcon(){
 		if(ans == 'Yes!'){
-			return ans_icon = __dirname + '/public/assets/yes.svg'
+			return ans_icon = '/assets/yes.svg'
 		}
 		else{
-			return ans_icon = __dirname + '/public/assets/no.svg'
+			return ans_icon = '/assets/no.svg'
 		}
 	}
 
