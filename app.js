@@ -13,6 +13,17 @@ app.get('/', function (req, res) {
 	var pg_img = req.query.pg_img
 	var pg_des = req.query.pg_des
 	var pg_url = req.originalUrl
+	var ans_icon = ''
+	function choseIcon(){
+		if(ans == 'Yes!'){
+			return ans_icon = __dirname + '/public/assets/yes.svg'
+		}
+		else{
+			return ans_icon = __dirname + '/public/assets/no.svg'
+		}
+	}
+
+	choseIcon();
 
 	var landingPage = pug.renderFile( __dirname + '/views' + '/home_page.pug',
 			{
@@ -37,7 +48,8 @@ app.get('/', function (req, res) {
   			page_title: pg_title, 
   			page_img: pg_img,
   			page_des: pg_des,
-  			page_url: pg_url
+  			page_url: pg_url,
+  			answer_icon: ans_icon
 			}
 		));
 	}
