@@ -3,24 +3,25 @@ html
   body
     .wraper
       .content.dis-flex
-        #noo #{question}
+        .noo-cont
+          #noo #{question}
         .update-wrap.full-width
-          #last Last update:
-          #update-time
+          span.update-cont
+            span#last Last update: 
+            span#update-time
         .full-width
           #answer-cont
-            .loader-cont
+            .loader-cont.full-width
               .loader mmm...
               .loader Checking for updates...
             #wait.no
-              | No!
+              | #{answer}
         .full-width.btn-cont
           button(onclick='animateText()') And now??
-        .full-width.links
-          button.copy-link(onclick='copyLink()') Copy link
-          a(href='/pages/yet-create.html') Create your own!
+        .links
+          span.flat-btn(onclick='copyLink()') Copy link
+          a.flat-btn(href='/') Create your own!
       footer
         | this is the end my friend, check 
         a(href='../index.html#page-2')
           b My works
-  script(type='text/javascript', src='../js/scripts.js')

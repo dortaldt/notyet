@@ -1,0 +1,238 @@
+$main-color: #9AEBE5
+$secondery-color: #2a54ce
+$bg-color-1: white
+$bg-color-2: white
+$bg-card: #f7f7f7
+$main-color-light: lighten($main-color, 30)
+$type-color: #383838
+$cta-color: #5E35B1
+$radius: 4px
+$small: 4px
+$meduim: 8px
+$large: 16px
+$x-large: 32px
+
+html
+  font-family: 'Open Sans', sans-serif
+  font-size: 16px
+  color: $type-color
+  background: linear-gradient(to bottom right, $bg-color-1, $bg-color-2)
+
+body
+  margin: 0
+
+form
+  justify-content: space-around
+  margin: auto
+
+textarea:focus, 
+input:focus
+    outline: none
+
+button,
+input[type=submit]
+  font-size: 1rem
+  padding: 1rem 2rem
+  border: none
+  color: white
+  border-radius: $radius
+  box-shadow: 1px 6px 12px rgba(0, 0, 0, 0.25)
+  background-color: $cta-color
+  margin: 16px auto
+
+.btn-cont
+  text-align: center
+
+button:active,
+input[type=submit]:active
+  box-shadow: none
+  background-color: black
+
+.flat-btn
+  margin-left: $large
+  margin-right: $large
+  height: 1rem
+  cursor: pointer
+  text-decoration: none
+  font-size: 1rem
+  padding: $large $large
+  color: $cta-color
+
+label
+  display: block
+
+input[type=text]
+  display: block
+  font-size: 1.5rem
+  line-height: 2rem
+  width: 100%
+  border-bottom: 4px solid $cta-color
+  border-top: 0px
+  border-left: 0px
+  border-right: 0px
+
+input[type=radio]
+  $radio-size: 20px
+  width: $radio-size
+  height: $radio-size
+  border: 1px solid
+  border-radius: $radius
+
+.dis-flex
+  display: flex
+  flex-wrap: wrap
+
+.flex-col
+  flex-direction: column
+
+.main-header
+  display: none
+  max-width: 300px
+  text-align: left
+  margin: auto
+
+.site-header
+  width: 100%
+  height: 40%
+
+.title-que-cont
+  font-size: 7rem
+  line-height: 5.3rem
+  flex-direction: column
+  justify-content: space-evenly
+  text-align: left
+  margin: auto
+  font-weight: 100
+
+.wraper
+  height: 100%
+  display: flex
+  flex-wrap: wrap
+
+.loader-cont
+  position: absolute
+  font-size: 2rem
+
+.loader
+  text-align: center
+  color: #383838
+  display: none
+  font-weight: 400
+
+.content
+  margin: 0px auto
+  max-width: 800px
+  height: 90%
+  justify-content: space-around
+
+.site-header
+  justify-content: space-between
+  flex-wrap: wrap-reverse
+
+.show
+  display: block
+
+.no
+  font-size: 4rem
+  text-align: center
+  vertical-align: middle
+  margin: auto
+  background-color: white
+
+//only for circle
+  $circle-size: 10rem
+  border: 0.25rem solid
+  border-radius: 8rem
+  height: $circle-size
+  width: $circle-size
+  line-height: $circle-size
+  box-shadow: 1px 5px 10px rgba(0, 0, 0, 0.25)
+  box-sizing: border-box 
+
+
+.full-width
+  width: 100%
+
+.update-wrap
+  text-align: center
+
+.update-cont
+  padding: 1rem
+  background-color: $main-color
+
+#noo
+  margin: auto
+  text-align: center
+  font-size: 2rem
+  line-height: 2rem
+  font-weight: 300
+  width: 100%
+
+.noo-cont
+    display: flex
+    padding: 1rem
+    width: 100%
+    border-radius: 4px
+
+#no-upload
+  color: transparent
+  border: 12px solid transparent
+  background-color: transparent
+  box-shadow: none
+
+.links
+  display: flex
+  justify-content: space-around
+
+.card
+  display: flex
+  margin: $large
+  padding: 1rem
+  background-color: $bg-card
+  width: 100%
+  border-radius: $radius
+  box-shadow: 1px 3px 6px rgba(0, 0, 0, 0.25)
+
+input
+  background-color: $bg-card
+
+footer
+  text-align: center
+  bottom: 0
+  width: 100%
+
+@media only screen and (max-device-width: 770px)
+  .content
+    max-width: 100%
+
+  .main-header
+    max-width: 100%
+    text-align: center
+
+  .title-que-cont
+    font-size: 3rem
+    line-height: 2.3rem
+
+  /*************************/
+  /********* Form **********/
+  /*************************/
+  form
+    margin: 0.5rem
+
+  label
+    display: block
+
+  /*************************/
+  /***** Dispaly class *****/
+  /*************************/
+  .no-mob
+    display: none
+
+  .card
+    padding: 0.5rem
+
+  .copy-link
+
+  #noo
+
+  #last, #update

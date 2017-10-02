@@ -8,15 +8,18 @@ html
             span
               h1 Let them answer themself
           .title-que-cont.dis-flex
-            span.title-que Not Yet.
+            span.title-que not
+              br
+              | yet.
         .card.dis-flex
-          form#form1.dis-flex.flex-col(action='../pages/yet.html')
+          form#form1.dis-flex.flex-col(action='/')
             label(for='question') What is the question they're keep nagging you about?
-            input#question(type='text', name='que', value='Are we there yet??')
+            input#question(type='text', name='que', onfocus="if(this.value == 'Are we there yet??') { this.value = ''; }", value='Are we there yet??' placeholder="Type your question here")
+            lable #[input#ans1(type='radio', name='ans', value='Yes!' checked)] Yes!
+            lable #[input#ans2(type='radio', name='ans', value= 'No!')] No!
             button(type='submit', form='form1', value='Submit') Create page!
-            // <input type="submit" value="Crete page!">
       footer
         | this is the end my friend, check 
         a(href='../index.html#page-2')
           b My works
-  script(type='text/javascript', src='../js/scripts.js')
+
