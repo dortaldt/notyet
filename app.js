@@ -13,7 +13,12 @@ app.get('/', function (req, res) {
 	var pg_img = req.query.pg_img
 	var pg_des = req.query.pg_des
 	var pg_url = req.originalUrl
+
+	var bg_img = 'background-image:url(/assets/tris.svg)'
+	var logo = '/assets/home_logo.svg'
 	var ans_icon = ''
+
+
 	function choseIcon(){
 		if(ans == 'Yes!'){
 			return ans_icon = '/assets/yes.svg'
@@ -30,7 +35,9 @@ app.get('/', function (req, res) {
 			page_title: "Welcome to Not Yet",
 			page_img: pg_img,
   			page_des: pg_des,
-  			page_url: pg_url				
+  			page_url: pg_url,
+  			background_image: bg_img,
+  			logo: logo				
 			}
 		)
 
@@ -49,7 +56,8 @@ app.get('/', function (req, res) {
   			page_img: pg_img,
   			page_des: pg_des,
   			page_url: pg_url,
-  			answer_icon: ans_icon
+  			answer_icon: ans_icon,
+  			background_image: bg_img
 			}
 		));
 	}

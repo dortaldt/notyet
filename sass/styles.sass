@@ -11,15 +11,65 @@ $small: 4px
 $meduim: 8px
 $large: 16px
 $x-large: 32px
+$full-height: calc(100% - 32px)
+
+$home-bg: #107eff
+$notyet-bg-yes: #34b397
+$notyet-bg-no: #de2038
 
 html
-  font-family: 'Open Sans', sans-serif
+  font-family: 'Roboto Slab', sans-serif
   font-size: 16px
   color: $type-color
-  background: linear-gradient(to bottom right, $bg-color-1, $bg-color-2)
+
+h1,
+h2,
+h6
+  margin: 0 
+
+h1
+  font-size: 4rem
+  line-height: 3rem
+  font-weight: bold
+
+h6
+  font-weight: 300
+  font-size: 1.5rem
+
+a 
+  text-decoration: none
+  color: $type-color
 
 body
   margin: 0
+#body-home
+  background: linear-gradient(to bottom right, $home-bg, lighten($home-bg, 20))
+#body-notyet-no
+  background: linear-gradient(to bottom right, $notyet-bg-no, lighten($notyet-bg-no, 20))
+#body-notyet-yes
+  background: linear-gradient(to bottom right, $notyet-bg-yes, lighten($notyet-bg-yes, 20))
+  
+.tri 
+  padding: $large
+  height: $full-height
+
+.content
+  margin: auto
+  max-width: 600px
+  flex-direction: column
+  justify-content: space-around
+  height: $full-height
+
+.card
+  display: flex
+  padding: 1rem
+  background-color: rgba($bg-card, 0.9)
+  border-radius: $radius
+  box-shadow: 1px 3px 6px rgba(0, 0, 0, 0.25)
+
+#question
+  margin-top: $large
+  margin-bottom: $large
 
 form
   justify-content: space-around
@@ -35,10 +85,13 @@ input[type=submit]
   padding: 1rem 2rem
   border: none
   color: white
-  border-radius: $radius
+  border-radius: 3rem
   box-shadow: 1px 6px 12px rgba(0, 0, 0, 0.25)
-  background-color: $cta-color
   margin: 16px auto
+
+#btn-home
+  background-color: $home-bg
+
 
 .btn-cont
   text-align: center
@@ -62,11 +115,12 @@ label
   display: block
 
 input[type=text]
+  background-color: transparent
   display: block
   font-size: 1.5rem
-  line-height: 2rem
+  line-height: 1.5rem
   width: 100%
-  border-bottom: 4px solid $cta-color
+  border-bottom: 4px solid $home-bg
   border-top: 0px
   border-left: 0px
   border-right: 0px
@@ -80,7 +134,6 @@ input[type=radio]
 
 .dis-flex
   display: flex
-  flex-wrap: wrap
 
 .flex-col
   flex-direction: column
@@ -100,14 +153,15 @@ input[type=radio]
   line-height: 5.3rem
   flex-direction: column
   justify-content: space-evenly
-  text-align: left
+  text-align: center
   margin: auto
   font-weight: 100
+  img
+    width: 100px
+    margin-top: 1.5rem
 
 .wraper
   height: 100%
-  display: flex
-  flex-wrap: wrap
 
 .loader-cont
   position: absolute
@@ -119,12 +173,6 @@ input[type=radio]
   display: none
   font-weight: 400
 
-.content
-  margin: 0px auto
-  max-width: 800px
-  height: 90%
-  justify-content: space-around
-
 .site-header
   justify-content: space-between
   flex-wrap: wrap-reverse
@@ -133,11 +181,14 @@ input[type=radio]
   display: block
 
 .no
+  display: inline-block
   font-size: 4rem
   text-align: center
-  vertical-align: middle
-  margin: auto
+  margin: 0 auto
   background-color: white
+  img
+    width: 170px
+    display: block
 
 //only for circle
   $circle-size: 10rem
@@ -152,13 +203,14 @@ input[type=radio]
 
 .full-width
   width: 100%
+  text-align: center
 
 .update-wrap
   text-align: center
 
 .update-cont
+  line-height: 3rem
   padding: 1rem
-  background-color: $main-color
 
 #noo
   margin: auto
@@ -171,7 +223,6 @@ input[type=radio]
 .noo-cont
     display: flex
     padding: 1rem
-    width: 100%
     border-radius: 4px
 
 #no-upload
@@ -184,22 +235,11 @@ input[type=radio]
   display: flex
   justify-content: space-around
 
-.card
-  display: flex
-  margin: $large
-  padding: 1rem
-  background-color: $bg-card
-  width: 100%
-  border-radius: $radius
-  box-shadow: 1px 3px 6px rgba(0, 0, 0, 0.25)
-
 input
   background-color: $bg-card
 
 footer
   text-align: center
-  bottom: 0
-  width: 100%
 
 @media only screen and (max-device-width: 770px)
   .content
@@ -227,9 +267,6 @@ footer
   /*************************/
   .no-mob
     display: none
-
-  .card
-    padding: 0.5rem
 
   .copy-link
 

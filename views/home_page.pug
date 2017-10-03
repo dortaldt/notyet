@@ -1,25 +1,25 @@
 html
   include includes/head.pug
-  body
-    .wraper
-      .content.dis-flex
+  body#body-home
+    .tri(style= background_image )
+      .content.dis-flex.card
         .site-header.dis-flex
-          .main-header.no-mob
-            span
-              h1 Let them answer themself
           .title-que-cont.dis-flex
-            span.title-que not
-              br
-              | yet.
-        .card.dis-flex
+            span.title-que
+              h1 not
+                br
+                | yet
+              img(src = logo)
+        div
           form#form1.dis-flex.flex-col(action='/')
-            label(for='question') What is the question they're keep nagging you about?
+            label(for='question') 
+              h6 What is the question they're keep nagging you about?
             input#question(type='text', name='que', onfocus="if(this.value == 'Are we there yet??') { this.value = ''; }", value='Are we there yet??' placeholder="Type your question here")
             lable #[input#ans1(type='radio', name='ans', value='Yes!' checked)] Yes!
             lable #[input#ans2(type='radio', name='ans', value= 'No!')] No!
-            button(type='submit', form='form1', value='Submit') Create page!
-      footer
-        | this is the end my friend, check 
-        a(href='../index.html#page-2')
-          b My works
+            button#btn-home(type='submit', form='form1', value='Submit') Create page!
+        footer
+          | Created by  
+          a(href='https://www.dordesign.com/index.html#page-2')
+            b Dor Tal
 
