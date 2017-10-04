@@ -6,25 +6,28 @@ html
           div
             .noo-cont
               #noo #{question}
-            .update-wrap.full-width
-              span.update-cont
-                span#last Last update: 
-                span#update-time
           .full-width
             #answer-cont
-              .loader-cont
-                .loader mmm...
-                .loader Checking for updates...
               .full-width
-                #wait.no
-                  img(src= answer_icon)
-                  span #{answer}
-          .full-width.btn-cont
-            button(class = theme_btn onclick='animateText()') And now??
+                .no
+                  .no-images
+                    img.no-image(src= answer_icon)
+                    img.no-image.spin.hide(src= spinner)
+                  span#no-text #{answer}
+                .update-wrap.full-width
+                  span.update-cont
+                    span#last Last update: 
+                    span#update-time
+                .loader-cont
+                  .loader mmm...
+                  .loader Checking for updates...
           .links
-            span.flat-btn(onclick='copyLink()') Copy link
-            a.flat-btn(href='/') Create your own!
-        //- footer
-          | this is the end my friend, check 
-          a(href='../index.html#page-2')
-            b My works
+            .full-width.btn-cont
+              button(class = theme_btn onclick='animateText()') And now??
+            .dis-flex.flex-col
+              span.flat-btn(onclick='copyLink()') Copy link
+              a.flat-btn(href='/') Create your own!
+          footer
+            | created by 
+            a(href='../index.html#page-2')
+              b Dor Tal

@@ -43,13 +43,15 @@ a
 body
   margin: 0
 .body-home
-  background: linear-gradient(to bottom right, $home-bg, lighten($home-bg, 20))
+  // background: linear-gradient(to bottom right, $home-bg, lighten($home-bg, 20))
+  background-color: white
 .body-notyet-no
   background: linear-gradient(to bottom right, $notyet-bg-no, lighten($notyet-bg-no, 20))
 .body-notyet-yes
   background: linear-gradient(to bottom right, $notyet-bg-yes, lighten($notyet-bg-yes, 20))
   
 .tri 
+  background-size: cover
   padding: $large
   height: $full-height
 
@@ -61,6 +63,7 @@ body
   height: $full-height
 
 .card
+  overflow: hidden
   display: flex
   padding: 1rem
   background-color: rgba($bg-card, 0.9)
@@ -72,6 +75,7 @@ body
   margin-bottom: $large
 
 form
+  max-width: 360px
   justify-content: space-around
   margin: auto
 
@@ -81,13 +85,17 @@ input:focus
 
 button,
 input[type=submit]
+  cursor: pointer
   font-size: 1rem
   padding: 1rem 2rem
   border: none
   color: white
   border-radius: 3rem
-  box-shadow: 1px 6px 12px rgba(0, 0, 0, 0.25)
   margin: 16px auto
+  &:hover
+    filter: brightness(120%)
+    
+
 
 #btn-home
   background-color: $home-bg
@@ -102,11 +110,6 @@ input[type=submit]
 .btn-cont
   text-align: center
 
-button:active,
-input[type=submit]:active
-  box-shadow: none
-  background-color: black
-
 .flat-btn
   margin-left: $large
   margin-right: $large
@@ -115,7 +118,10 @@ input[type=submit]:active
   text-decoration: none
   font-size: 1rem
   padding: $large $large
-  color: $cta-color
+  color: lighten($type-color, 20%)
+  font-weight: bold
+  &:hover
+    filter: brightness(80%)
 
 label
   display: block
@@ -162,54 +168,62 @@ input[type=radio]
   text-align: center
   margin: auto
   font-weight: 100
-  img
-    width: 100px
-    margin-top: 1.5rem
 
 .wraper
   height: 100%
 
 .loader-cont
+  position: relative
   max-width: calc(100% - 32px)
-  position: absolute
-  font-size: 2rem
+  font-size: 1rem
   margin-left: auto
   margin-right: auto
   left: 0
   right: 0
 
 .loader
+  width: 100%
+  position: absolute
+  top: 0
   text-align: center
   color: #383838
-  display: none
+  visibility: hidden
   font-weight: 400
 
 .site-header
   justify-content: space-between
   flex-wrap: wrap-reverse
 
-.show
-  display: block
-
 .no
+  margin-top: 1rem
   display: inline-block
   font-size: 4rem
+  line-height: 4rem
   text-align: center
-  margin: 0 auto
-  img
-    width: 170px
-    display: block
+  margin: 1rem auto 0px auto
+  font-weight: bold
 
-//only for circle
-  $circle-size: 10rem
-  border: 0.25rem solid
-  border-radius: 8rem
-  height: $circle-size
-  width: $circle-size
-  line-height: $circle-size
-  box-shadow: 1px 5px 10px rgba(0, 0, 0, 0.25)
-  box-sizing: border-box 
+.no-images
+  margin: auto
+  height: 70px
+  width: 70px
+  position: relative
 
+.no-image
+  position: absolute
+  width: 100%
+  height: 100%
+  top: 0
+  left: 0
+
+.spin
+  animation: spin 2s cubic-bezier(0.5, -0.23, 0.38, 1.23) infinite
+
+@keyframes spin
+    0% 
+      transform: rotate(0deg)
+    100%
+      transform: rotate(360deg)
 
 .full-width
   width: 100%
@@ -219,8 +233,7 @@ input[type=radio]
   text-align: center
 
 .update-cont
-  line-height: 3rem
-  padding: 1rem
+  font-weight: 100
 
 #noo
   margin: auto
@@ -232,14 +245,23 @@ input[type=radio]
 
 .noo-cont
     display: flex
-    padding: 1rem
     border-radius: 4px
 
-#no-upload
+.hide
   visibility: hidden
 
+.show
+  visibility: visible
+
+.d-show
+  display: block
+
 .links
+  margin-top: 1rem
+  overflow: hidden
+  text-align: center
   display: flex
+  flex-direction: column
   justify-content: space-around
 
 input
@@ -247,10 +269,12 @@ input
 
 footer
   text-align: center
+  color: lighten($type-color, 30)
 
 @media only screen and (max-device-width: 770px)
   .content
     max-width: 100%
+    justify-content: space-between
 
   .main-header
     max-width: 100%
@@ -268,15 +292,3 @@ footer
 
   label
     display: block
-
-  /*************************/
-  /***** Dispaly class *****/
-  /*************************/
-  .no-mob
-    display: none
-
-  .copy-link
-
-  #noo
-
-  #last, #update

@@ -15,8 +15,9 @@ app.get('/', function (req, res) {
 	var pg_url = req.originalUrl
 	var theme_color_cls = ''
 	var theme_color_btn = ''
+	var spinner = '/assets/loader.svg'
 
-	var bg_img = 'background-image:url(/assets/tris.svg)'
+	var bg_img = 'background-image:url(/assets/bg_shapes.svg)'
 	var logo = '/assets/home_logo.svg'
 	var ans_icon = ''
 
@@ -67,7 +68,8 @@ app.get('/', function (req, res) {
   			answer_icon: ans_icon,
   			background_image: bg_img,
   			theme_color: theme_color_cls,
-  			theme_btn: theme_color_btn
+  			theme_btn: theme_color_btn,
+  			spinner: spinner
 			}
 		));
 	}

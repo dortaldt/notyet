@@ -1,13 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg width="48px" height="48px" viewBox="0 0 48 48" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<svg width="70px" height="70px" viewBox="0 0 70 70" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
     <!-- Generator: Sketch 46.2 (44496) - http://www.bohemiancoding.com/sketch -->
-    <title>yes</title>
+    <title>yes copy</title>
     <desc>Created with Sketch.</desc>
     <defs></defs>
     <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-        <g id="yes" stroke="#21C44F" stroke-width="2">
-            <circle id="Oval" cx="24" cy="24" r="17"></circle>
-            <polyline id="Path-2" stroke-linecap="round" points="16 23.9933981 20.4128331 29.5871669 32 18"></polyline>
+        <g id="iPhone-7" transform="translate(-153.000000, -179.000000)" stroke="#34B397">
+            <g id="yes-copy" transform="translate(153.000000, 179.000000)">
+                <circle id="Oval" stroke-width="2" cx="35" cy="35" r="34"></circle>
+                <polyline id="Path-2" stroke-width="4" stroke-linecap="round" points="20 35.3880007 28.6188146 46.25 51.25 23.75"></polyline>
+            </g>
         </g>
     </g>
 </svg>

@@ -19,10 +19,15 @@ var printUpdate = function() {
 
 var animateText = function() {
 	var msgs = document.getElementsByClassName('loader');
-	var no = document.getElementById('wait')
+	var noText = document.getElementById('no-text')
+	var images = document.getElementsByClassName('no-image')
+
 	ga('send', 'event', 'Now button', 'click')
+
 	msgs[0].className = 'loader show'
-	no.id = 'no-upload'
+	noText.className += ' hide'
+	images[0].className += ' hide'
+	images[1].className = 'no-image spin'
 	setTimeout(function(){
 		msgs[0].className = 'loader'
 		msgs[1].className = 'loader show'
@@ -30,7 +35,9 @@ var animateText = function() {
 			msgs[1].className = 'loader'
 			printUpdate()
 			setTimeout(function(){
-				no.id = 'wait'
+				noText.className = ''
+				images[0].className = 'no-image'
+				images[1].className += ' hide'
 			},100)
 		},2000);
 	},2000);
