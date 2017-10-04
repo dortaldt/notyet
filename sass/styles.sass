@@ -42,11 +42,11 @@ a
 
 body
   margin: 0
-#body-home
+.body-home
   background: linear-gradient(to bottom right, $home-bg, lighten($home-bg, 20))
-#body-notyet-no
+.body-notyet-no
   background: linear-gradient(to bottom right, $notyet-bg-no, lighten($notyet-bg-no, 20))
-#body-notyet-yes
+.body-notyet-yes
   background: linear-gradient(to bottom right, $notyet-bg-yes, lighten($notyet-bg-yes, 20))
   
 .tri 
@@ -91,6 +91,12 @@ input[type=submit]
 
 #btn-home
   background-color: $home-bg
+
+.btn-no
+  background-color: $notyet-bg-no
+
+.btn-yes
+  background-color: $notyet-bg-yes
 
 
 .btn-cont
@@ -164,8 +170,13 @@ input[type=radio]
   height: 100%
 
 .loader-cont
+  max-width: calc(100% - 32px)
   position: absolute
   font-size: 2rem
+  margin-left: auto
+  margin-right: auto
+  left: 0
+  right: 0
 
 .loader
   text-align: center
@@ -185,7 +196,6 @@ input[type=radio]
   font-size: 4rem
   text-align: center
   margin: 0 auto
-  background-color: white
   img
     width: 170px
     display: block
@@ -226,10 +236,7 @@ input[type=radio]
     border-radius: 4px
 
 #no-upload
-  color: transparent
-  border: 12px solid transparent
-  background-color: transparent
-  box-shadow: none
+  visibility: hidden
 
 .links
   display: flex

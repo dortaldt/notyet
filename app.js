@@ -13,6 +13,8 @@ app.get('/', function (req, res) {
 	var pg_img = req.query.pg_img
 	var pg_des = req.query.pg_des
 	var pg_url = req.originalUrl
+	var theme_color_cls = ''
+	var theme_color_btn = ''
 
 	var bg_img = 'background-image:url(/assets/tris.svg)'
 	var logo = '/assets/home_logo.svg'
@@ -21,10 +23,16 @@ app.get('/', function (req, res) {
 
 	function choseIcon(){
 		if(ans == 'Yes!'){
-			return ans_icon = '/assets/yes.svg'
+			ans_icon = '/assets/yes.svg'
+			theme_color_cls = 'body-notyet-yes'
+			theme_color_btn = 'btn-yes'
+			return
 		}
 		else{
-			return ans_icon = '/assets/no.svg'
+			ans_icon = '/assets/no.svg'
+			theme_color_cls = 'body-notyet-no'
+			theme_color_btn = 'btn-no'
+			return
 		}
 	}
 
@@ -57,7 +65,9 @@ app.get('/', function (req, res) {
   			page_des: pg_des,
   			page_url: pg_url,
   			answer_icon: ans_icon,
-  			background_image: bg_img
+  			background_image: bg_img,
+  			theme_color: theme_color_cls,
+  			theme_btn: theme_color_btn
 			}
 		));
 	}

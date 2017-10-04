@@ -1,9 +1,8 @@
 html
   include includes/head.pug
-  body#body-notyet
-    .tri(style= background_image )
-      .wraper
-        .content.dis-flex
+  body(class = theme_color)
+    .tri(style = background_image )
+        .content.dis-flex.card
           div
             .noo-cont
               #noo #{question}
@@ -13,7 +12,7 @@ html
                 span#update-time
           .full-width
             #answer-cont
-              .loader-cont.full-width
+              .loader-cont
                 .loader mmm...
                 .loader Checking for updates...
               .full-width
@@ -21,7 +20,7 @@ html
                   img(src= answer_icon)
                   span #{answer}
           .full-width.btn-cont
-            button(onclick='animateText()') And now??
+            button(class = theme_btn onclick='animateText()') And now??
           .links
             span.flat-btn(onclick='copyLink()') Copy link
             a.flat-btn(href='/') Create your own!
