@@ -40,7 +40,7 @@ app.get('/', function (req, res) {
 	var ans = req.query.ans
 	var pg_title = req.query.pg_title
 	var pg_img = req.query.pg_img
-	var pg_des = req.query.pg_des
+	var pg_des = "Because I'm tired answering.."
 	var pg_url = req.protocol + '://' + req.get('host') + req.originalUrl
 	var theme_color_cls = ''
 	var theme_color_btn = ''
