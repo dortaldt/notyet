@@ -4,6 +4,8 @@ const pug = require('pug')
 
 app.use(express.static('public'));
 
+app.set('port', (process.env.PORT || 5000));
+
 app.get('/', function (req, res) {
 	
 	//Get the values from the url ('name'):
@@ -76,10 +78,11 @@ app.get('/', function (req, res) {
 })
 
 
-app.listen(3000, function () {
-  console.log('Example app listening on port 3000!')
-})
+// app.listen(3000, function () {
+//   console.log('Example app listening on port 3000!')
+// })
 
-http.listen(process.env.PORT || 3000, function(){
-  console.log('listening on', http.address().port);
+app.listen(app.get('port'), function() {
+  console.log('Node app is running on port', app.get('port'));
 });
+
