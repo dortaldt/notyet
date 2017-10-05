@@ -22,7 +22,7 @@ var animateText = function() {
 	var noText = document.getElementById('no-text')
 	var images = document.getElementsByClassName('no-image')
 
-	ga('send', 'event', 'Now button', 'click')
+	ga('send', 'event', 'And now?', 'click')
 
 	msgs[0].className = 'loader show'
 	noText.className += ' hide'
