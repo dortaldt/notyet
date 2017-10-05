@@ -16,7 +16,7 @@ h1 {
 
 h6 {
   font-weight: 300;
-  font-size: 1.5rem; }
+  font-size: 1.2rem; }
 
 a {
   text-decoration: none;
@@ -108,16 +108,21 @@ input[type=submit] {
 label {
   display: block; }
 
+.lables {
+  margin-top: 1rem; }
+
 input[type=text] {
   background-color: transparent;
   display: block;
-  font-size: 1.5rem;
-  line-height: 1.5rem;
+  font-size: 1.1rem;
+  line-height: 1.2rem;
   width: 100%;
-  border-bottom: 4px solid #107eff;
+  border-bottom: 4px solid #383838;
   border-top: 0px;
   border-left: 0px;
   border-right: 0px; }
+  input[type=text]:focus {
+    border-bottom: 4px solid #107eff; }
 
 input[type=radio] {
   width: 20px;
