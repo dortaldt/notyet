@@ -1,10 +1,36 @@
 const express = require('express')
 const app = express()
 const pug = require('pug')
+var fs = require("fs");
 
 app.use(express.static('public'));
 
 app.set('port', (process.env.PORT || 5000));
+
+//creating and reading form JSON database:
+
+var obj = {
+	"key" : "value"
+};
+
+var newKey = "new key2"
+var newVal = "new value2"
+
+// obj[newKey] = newVal;
+
+var json = JSON.stringify(obj);
+
+fs.readFile('data.json', 'utf8', function readFileCallback(err, data){
+    if (err){
+        console.log(err);
+    } else {
+    obj = JSON.parse(data); //now it an object
+    obj[newKey] = newVal //add some data
+    json = JSON.stringify(obj); //convert it back to json
+    fs.writeFile('data.json', json, 'utf8'); // write it back 
+}});
+
+/***********************************/
 
 app.get('/', function (req, res) {
 	
@@ -77,10 +103,6 @@ app.get('/', function (req, res) {
 	}
 })
 
-
-// app.listen(3000, function () {
-//   console.log('Example app listening on port 3000!')
-// })
 
 app.listen(app.get('port'), function() {
   console.log('Node app is running on port', app.get('port'));
