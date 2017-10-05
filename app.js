@@ -41,7 +41,7 @@ app.get('/', function (req, res) {
 	var pg_title = req.query.pg_title
 	var pg_img = req.query.pg_img
 	var pg_des = req.query.pg_des
-	var pg_url = req.originalUrl
+	var pg_url = req.protocol + '://' + req.get('host') + req.originalUrl
 	var theme_color_cls = ''
 	var theme_color_btn = ''
 	var spinner = '/assets/loader.svg'
