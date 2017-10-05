@@ -15,8 +15,10 @@ html
             label(for='question') 
               h6 What is the question they're keep nagging you about?
             input#question(type='text', name='que', onfocus="if(this.value == 'Are we there yet??') { this.value = ''; }", value='Are we there yet??' placeholder="Type your question here")
+
             lable #[input#ans1(type='radio', name='ans', value='Yes!' checked)] Yes!
             lable #[input#ans2(type='radio', name='ans', value= 'No!')] No!
+            
             button#btn-home(type='submit', form='form1', value='Submit') Create page!
         footer
           | Created by  

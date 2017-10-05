@@ -35,6 +35,7 @@ function writeData(key,value){
 app.get('/', function (req, res) {
 	
 	//Get the values from the url ('name'):
+	var queId = 123
 	var que = req.query.que
 	var ans = req.query.ans
 	var pg_title = req.query.pg_title
@@ -49,7 +50,7 @@ app.get('/', function (req, res) {
 	var logo = '/assets/home_logo.svg'
 	var ans_icon = ''
 
-	writeData('key send', que)
+	writeData(queId, que)
 
 	function choseIcon(){
 		if(ans == 'Yes!'){
