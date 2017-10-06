@@ -18,8 +18,8 @@ html
             input#add-image(type='text', name='pg_img', onfocus="if(this.value == 'Paste preview image url') { this.value = ''; }", value='Paste preview image url' placeholder="Paste preview image url")
             .lables
               span And the answer is: 
-              lable #[input#ans1(type='radio', name='ans', value='Yes!' checked)] Yes!
-              lable #[input#ans2(type='radio', name='ans', value= 'No!')] No!
+              lable #[input#ans1(type='radio', name='ans', value= true checked)] Yes!
+              lable #[input#ans2(type='radio', name='ans', value= false)] No!
             button#btn-home(type='submit', form='form1', value='Submit') Create page!
         footer
           | Created by  
