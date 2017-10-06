@@ -13,7 +13,11 @@ html
                   .no-images
                     img.no-image(src= answer_icon)
                     img.no-image.spin.hide(src= spinner)
-                  span#no-text #{answer}
+                  span#no-text 
+                  if answer
+                    |Yes!
+                  else
+                    |No!
                 .update-wrap.full-width
                   span.update-cont
                     span#last Last update: 

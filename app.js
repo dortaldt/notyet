@@ -74,11 +74,11 @@ app.get('/', function (req, res) {
 	function setVal(callback){
 		console.log('setVal start')
 		if(!haveId) {
-			id = req.query.id //need to be generated
+			id =  123//req.query.id //need to be generated
 			que = req.query.que
 			ans = req.query.ans
 			pg_img = req.query.pg_img
-			pass = req.query.pass
+			pass = "temp" //req.query.pass
 
 			writeData(id, que, ans, pg_img, pass)
 			console.log('data created!, id: ' + id)
@@ -89,7 +89,7 @@ app.get('/', function (req, res) {
 				var pullQueries = obj.questions
 				var pullQuery = pullQueries.find(item => item.id == haveId)
 				console.log(pullQuery)
-				que = pullQuery.queustion
+				que = pullQuery.question
 				ans = pullQuery.answer
 				pg_img = pullQuery.image
 				console.log('data loaded, id: ' + pullQuery.id)
@@ -115,9 +115,10 @@ app.get('/', function (req, res) {
 	}
 
 	function setPagesNotyet(){
+		console.log('setPagesNotyet start')
 	  	var notyetPage = pug.renderFile( __dirname + '/views' + '/notyet_page.pug',
 	  		{
-	  			question: que,
+	  			question:que,
 	  			answer: ans,
 	  			page_title: pg_title, 
 	  			page_img: pg_img,
@@ -131,6 +132,7 @@ app.get('/', function (req, res) {
 			}
 		)
 		res.send(notyetPage)
+		console.log('setPagesNotyet end')
 	  }
 
   	function chooseIcon(callback){
@@ -156,7 +158,8 @@ app.get('/', function (req, res) {
 
 	//in case no question is given, load home page:
 	if(typeof haveId == 'undefined') {
-		res.send(landingPage);
+		setVal()
+		setPagesLand();
 	}
 
 	//send variables to template file and render result:
