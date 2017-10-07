@@ -2,6 +2,7 @@ const express = require('express')
 const app = express()
 const pug = require('pug')
 var fs = require('fs');
+var shortid = require('shortid'); 
 
 app.use(express.static('public'));
 
@@ -11,6 +12,13 @@ app.set('port', (process.env.PORT || 5000));
 //creating and reading form JSON database:
 
 var obj = {};
+
+var tempId = ''
+function generateId(){
+	tempId = shortid.generate()
+	console.log('tempId is ' + tempId)
+}
+generateId()
 
 function getData(callback){
 	fs.readFile('data.json', 'utf8', function readFileCallback(err, data){
@@ -33,7 +41,6 @@ function writeData(id,question,answer,image,pass){
 	        console.log(err);
 	    } else {
 	    obj = JSON.parse(data); //now it an object
-	    console.log(obj)
 	    obj.questions.push({
 	    	"id": id,
 	    	"question": question,
@@ -73,30 +80,33 @@ app.get('/', function (req, res) {
 
 	function setVal(callback){
 		console.log('setVal start')
-		if(!haveId) {
-			id =  123//req.query.id //need to be generated
-			que = req.query.que
-			ans = req.query.ans
-			pg_img = req.query.pg_img
-			pass = "temp" //req.query.pass
 
-			writeData(id, que, ans, pg_img, pass)
-			console.log('data created!, id: ' + id)
-		}
-		else {
-			function processCall(){
-				console.log(haveId)
-				var pullQueries = obj.questions
-				var pullQuery = pullQueries.find(item => item.id == haveId)
-				console.log(pullQuery)
+		
+		function processCall(){
+			var pullQueries = obj.questions
+			var pullQuery = pullQueries.find(item => item.id == haveId)
+
+			if(pullQuery){
 				que = pullQuery.question
 				ans = pullQuery.answer
 				pg_img = pullQuery.image
 				console.log('data loaded, id: ' + pullQuery.id)
 				callback(setPagesNotyet)
 			}
-			getData(processCall)
+			else{
+				
+				id = tempId
+				que = req.query.que
+				ans = req.query.ans
+				pg_img = req.query.pg_img
+				pass = "temp" //req.query.pass
+
+				writeData(id, que, ans, pg_img, pass)
+				console.log('data created!, id: ' + id)
+				callback(setPagesNotyet)
+			}
 		}
+		getData(processCall)
 		console.log('setVal end')
 	}
 
@@ -108,7 +118,8 @@ app.get('/', function (req, res) {
 	  			page_des: pg_des,
 	  			page_url: pg_url,
 	  			background_image: bg_img,
-	  			logo: logo				
+	  			logo: logo,
+	  			id: tempId			
 			}
 		)
 		res.send(landingPage)
@@ -132,6 +143,7 @@ app.get('/', function (req, res) {
 			}
 		)
 		res.send(notyetPage)
+		generateId()
 		console.log('setPagesNotyet end')
 	  }
 
@@ -158,7 +170,7 @@ app.get('/', function (req, res) {
 
 	//in case no question is given, load home page:
 	if(typeof haveId == 'undefined') {
-		setVal()
+		// setVal()
 		setPagesLand();
 	}
 

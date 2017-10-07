@@ -11,7 +11,7 @@ html
                 | yet
               img(src = logo)
         div
-          form#form1.dis-flex.flex-col(action='/')
+          form#form1.dis-flex.flex-col(action = '/?id=' + id )
             label(for='question') 
               h6 What is the question they're keep nagging you about?
             input#question(type='text', name='que', onfocus="if(this.value == 'Are we there yet??') { this.value = ''; }", value='Are we there yet??' placeholder="Type your question here")
@@ -20,6 +20,7 @@ html
               span And the answer is: 
               lable #[input#ans1(type='radio', name='ans', value=1 checked)] Yes!
               lable #[input#ans2(type='radio', name='ans', value=0)] No!
+              input(type = "hidden" name = "id" value = id)
             button#btn-home(type='submit', form='form1', value='Submit') Create page!
         footer
           | Created by  
