@@ -12,24 +12,20 @@ tempRedis.HOST = 'ec2-34-251-131-150.eu-west-1.compute.amazonaws.com'
 tempRedis.PASS = 'pc80586139fc45971c4b8c02148492bf50f23b22702d0757fa9125ee90df860b3'
 
 
-//connecting to Redis DB
+//connecting to Redis DB, should get URL_ when goes production 
 var client = require('redis').createClient(tempRedis.PORT, tempRedis.HOST);
 client.auth(tempRedis.PASS);
+
 client.on('connect', function() {
 	console.log('connected');
 });
 
-
-var id = 422
-//print all data on redis
-// client.hmset(id,{
-// 	'question': 'que one 421',
-// 	'answer': 'true 421'
-// });
-
-client.hgetall(id, function(err, object) {
-    console.log(object);
+///////////////////Erase all data:///////////////////////////
+client.flushdb( function (err, succeeded) {
+    console.log('delete: ' + succeeded); // will be true if successfull
 });
+
+
 
 app.use(express.static('public'));
 
@@ -38,46 +34,39 @@ app.set('port', (process.env.PORT || 5000));
 
 //creating and reading form JSON database:
 
-var obj = {};
+var item = {};
+var allItems = ['test','test2'];
 
 var tempId = ''
+
 function generateId(){
 	tempId = shortid.generate()
 	console.log('tempId is ' + tempId)
 }
+
 generateId()
 
-function getData(callback){
-	fs.readFile('data.json', 'utf8', function readFileCallback(err, data){
-	    if (err){
-	        console.log(err);
-	    }
-	    else {
-	    	obj = JSON.parse(data); //now it an object
-		}
-		callback(obj)
+function getAllData(callback){
+
+	client.keys('*', function (err, keys) {
+	  if (err) return console.log(err);
+
+	  for(var i = 0, len = keys.length; i < len; i++) {
+	    allItems.push(keys[i]);
+	    console.log(keys[i] + 'pushed to allItems')
+	  }
 	})
-}
+
+	  callback(allItems)
+};
 
 function writeData(id,question,answer,image,pass){
-
-	var json = JSON.stringify(obj);
-
-	fs.readFile('data.json', 'utf8', function readFileCallback(err, data){
-	    if (err){
-	        console.log(err);
-	    } else {
-	    obj = JSON.parse(data); //now it an object
-	    obj.questions.push({
-	    	"id": id,
-	    	"question": question,
-	    	"answer": answer,
-	    	"image": image,
-	    	"pass": pass
-	    })
-	    json = JSON.stringify(obj); //convert it back to json
-	    fs.writeFile('data.json', json, 'utf8'); // write it back 
-	}});
+	client.hmset(id,{
+		'question': question,
+		'answer': answer,
+		'image': image,
+		'pass': pass
+	});
 	console.log('writeData done')
 }
 
@@ -102,27 +91,52 @@ app.get('/', function (req, res) {
 	var ans = " "
 	var pg_img = " "
 	var pass = " "
+
+	function getItemData(callback){
+		console.log('getItemData start')
+
+		client.hgetall(haveId , function(err, object) {
+
+	    	item = object
+
+	    	id = haveId
+	    	console.log('getItemData question: ' + object.question + ' answer: '+ object.answer + ' image: ' + object.image + ' pass: '+ object.pass)
+	    	que =object.question
+	    	ans = object.answer
+	    	pg_img = object.image
+	    	pass = object.pass
+	    	callback()
+		});
+		
+		console.log('getItemData end')
+	}
 	
 	//Get the values from the url ('name'):
 
 	function setVal(callback){
 		console.log('setVal start')
-
 		
 		function processCall(){
-			var pullQueries = obj.questions
-			var pullQuery = pullQueries.find(item => item.id == haveId)
+			console.log('processCall start')
 
-			if(pullQuery){
-				que = pullQuery.question
-				ans = pullQuery.answer
-				pg_img = pullQuery.image
-				console.log('data loaded, id: ' + pullQuery.id)
-				callback(setPagesNotyet)
+			function pullQuery(array, id) {
+			    return array.indexOf(id) > -1;
+			}
+
+			console.log('value of allItems is: ' +allItems+ ' and haveId is ' + haveId + 'pullQuery is ' + pullQuery(allItems,haveId))
+
+			if(pullQuery(allItems,haveId)){
+				getItemData(setValues)
+				function setValues(){
+					que = item.question
+					ans = item.answer
+					pg_img = item.image
+					console.log('data loaded, id: ' + haveId)
+					callback(setPagesNotyet)
+				}
 			}
 			else{
-				
-				id = tempId
+				id  = req.query.id
 				que = req.query.que
 				ans = req.query.ans
 				pg_img = req.query.pg_img
@@ -132,12 +146,15 @@ app.get('/', function (req, res) {
 				console.log('data created!, id: ' + id)
 				callback(setPagesNotyet)
 			}
+		console.log('processCall end')
 		}
-		getData(processCall)
+		getAllData(processCall)
 		console.log('setVal end')
 	}
 
 	function setPagesLand(){
+		generateId()
+		console.log('setPagesLand start with this tempId: ' + tempId)
 		var landingPage = pug.renderFile( __dirname + '/views' + '/home_page.pug',
 			{
 				page_title: "Welcome to Not Yet",
@@ -150,6 +167,7 @@ app.get('/', function (req, res) {
 			}
 		)
 		res.send(landingPage)
+		('setPagesLand end')
 	}
 
 	function setPagesNotyet(){
@@ -170,14 +188,24 @@ app.get('/', function (req, res) {
 			}
 		)
 		res.send(notyetPage)
-		generateId()
 		console.log('setPagesNotyet end')
-	  }
+		
+
+		//read redis:
+		client.keys('*', function (err, keys) {
+		  if (err) return console.log(err);
+
+		  for(var i = 0, len = keys.length; i < len; i++) {
+		    console.log("Already on redis: " + keys[i]);
+		  }
+		});    
+		console.log('setPagesNotyet end')
+	}
 
   	function chooseIcon(callback){
-  		console.log('chooseIcon is running' + ans)
+  		console.log('chooseIcon is running and item.answer = ' + ans)
 
-		if(ans){
+		if(ans == "true"){
 			ans_icon = '/assets/yes.svg'
 			theme_color_cls = 'body-notyet-yes'
 			theme_color_btn = 'btn-yes'
