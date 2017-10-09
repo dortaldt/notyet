@@ -81,22 +81,23 @@ function writeData(id,question,answer,image,pass,callback){
 	callback()
 }
 
+
+var pg_des = "Because I'm tired answering.."
+var spinner = '/assets/loader.svg'
+var bg_img = 'background-image:url(/assets/bg_shapes.svg)'
+var logo = '/assets/home_logo.svg'
+
+
 /***********************************/
 
 app.get('/', function (req, res) {
 
 	var haveId = req.query.id
-
-	var pg_title = que
-	var pg_des = "Because I'm tired answering.."
 	var pg_url = req.protocol + '://' + req.get('host') + req.originalUrl
-	var spinner = '/assets/loader.svg'
-	var bg_img = 'background-image:url(/assets/bg_shapes.svg)'
-	var logo = '/assets/home_logo.svg'
+	var pg_title = que
 	var ans_icon = ''
 	var theme_color_cls = ''
 	var theme_color_btn = ''
-
 	var id = " "
 	var que = " "
 	var ans = " "
@@ -255,6 +256,82 @@ app.get('/', function (req, res) {
 		setVal(chooseIcon)
 		
 	}
+})
+
+//change page:
+
+app.get('/change', function (req, res) {
+	console.log('change loaded')
+
+	var idSub
+	var passSub
+	var newStat
+	var passDB
+	// var idDB
+	var oldStat
+
+	function fetchData(callback){
+		console.log('fetchData start')
+		client.hgetall(idSub , function(err, object) {
+			if(object != null){
+				passDB = object.pass
+				oldStat = object.answer
+				callback()
+			}
+			else {
+				console.log('cant find ID - Kill')
+			 return
+			}
+		});
+	}
+
+	function getSubData(callback){
+		console.log('getSubData start')
+		idSub = req.query.page_id
+		passSub = req.query.page_pass
+		newStat = req.query.ans
+		callback(checkValid)
+	}
+
+	function checkValid(){
+		if(passDB === passSub){
+			console.log('We have a match')
+			writeNewStat()
+
+		}
+		else
+			console.log(passDB +' is not matching ' + passSub)
+	}
+
+	function writeNewStat(){
+		client.hmset(idSub,{
+		'answer': newStat
+		});
+		console.log('Status changed to ' + newStat)
+	}
+
+	getSubData(fetchData)
+
+
+
+
+	var pg_url = req.protocol + '://' + req.get('host') + req.originalUrl
+
+	function setPagesChange(){
+		var changePage = pug.renderFile( __dirname + '/views' + '/change_stat.pug',
+			{
+				page_title: "Welcome to Not Yet change page",
+				page_img: "temp",
+	  			page_des: pg_des,
+	  			page_url: pg_url,
+	  			logo: logo,
+	  			background_image: bg_img	
+			}
+		)
+		res.send(changePage)
+	}
+	setPagesChange()
+
 })
 
 
