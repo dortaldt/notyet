@@ -158,7 +158,7 @@ app.get('/', function (req, res) {
 					que = req.query.que
 					ans = req.query.ans
 					pg_img = req.query.pg_img
-					pass = "temp" //req.query.pass
+					pass = req.query.pass
 					chooseIcon()
 					writeData(id, que, ans, pg_img, pass, callback)
 				}
@@ -204,7 +204,8 @@ app.get('/', function (req, res) {
 	  			background_image: bg_img,
 	  			theme_color: theme_color_cls,
 	  			theme_btn: theme_color_btn,
-	  			spinner: spinner
+	  			spinner: spinner,
+	  			changeId: haveId	
 			}
 		)
 		res.send(notyetPage)
@@ -263,6 +264,7 @@ app.get('/', function (req, res) {
 app.get('/change', function (req, res) {
 	console.log('change loaded')
 
+	var idLoad = req.query.id
 	var idSub
 	var passSub
 	var newStat
@@ -325,7 +327,8 @@ app.get('/change', function (req, res) {
 	  			page_des: pg_des,
 	  			page_url: pg_url,
 	  			logo: logo,
-	  			background_image: bg_img	
+	  			background_image: bg_img,
+	  			idLoad	
 			}
 		)
 		res.send(changePage)
