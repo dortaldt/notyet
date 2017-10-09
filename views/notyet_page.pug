@@ -29,9 +29,14 @@ html
             .full-width.btn-cont
               button(class = theme_btn onclick='animateText()') And now??
             .dis-flex.flex-col
-              span.flat-btn(onclick='copyLink()') Copy link
+              span.flat-btn(onclick='showShare()') Share
               a.flat-btn(href='/') Create your own!
               a.flat-btn(href='/change?id=' + changeId) Update status
+          #share-box.card.hide
+            span#share-link
+            | Copy link:
+            span
+            | notyetapp.herokuapp.com/?id=#{changeId}
           footer
             | created by 
             a(href='http://www.dordesign.com/index.html#page-2')

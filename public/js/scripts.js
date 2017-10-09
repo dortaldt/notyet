@@ -122,6 +122,16 @@ function sendId() {
   xhttp.send();
 }
 
+function showShare(){
+	var box = document.getElementById('share-box')
+	box.className = 'card'
+}
+
+function hideShare(){
+	var box = document.getElementById('share-box')
+	box.className += ' hide'
+}
+
 
 
 
