@@ -35,7 +35,7 @@ app.set('port', (process.env.PORT || 5000));
 //creating and reading form JSON database:
 
 var item = {};
-var allItems = ['test','test2'];
+var allItems =[]
 
 var tempId = ''
 
@@ -47,27 +47,38 @@ function generateId(){
 generateId()
 
 function getAllData(callback){
+	console.log('getAllData start (3)')
+
+	var listHold = ['list0']
 
 	client.keys('*', function (err, keys) {
+
 	  if (err) return console.log(err);
 
-	  for(var i = 0, len = keys.length; i < len; i++) {
-	    allItems.push(keys[i]);
-	    console.log(keys[i] + 'pushed to allItems')
+	  for(var i = 0, len = keys.length; i <= len; i++) {
+	    listHold.push(keys[i]);
+	    console.log(keys[i] + 'pushed to listHold')
+	     if(i === len - 1 || 0 === len){
+	     	allItems = listHold
+	     	console.log('listHold value is ' + listHold)
+	     	console.log('getAllData end (3)')
+	     	callback()
+	     }
 	  }
 	})
-
-	  callback(allItems)
 };
 
-function writeData(id,question,answer,image,pass){
+function writeData(id,question,answer,image,pass,callback){
+	console.log('writeData start')
 	client.hmset(id,{
 		'question': question,
 		'answer': answer,
 		'image': image,
 		'pass': pass
 	});
-	console.log('writeData done')
+	console.log('data created!, id: ' + id)
+	console.log('writeData end')
+	callback()
 }
 
 /***********************************/
@@ -93,7 +104,7 @@ app.get('/', function (req, res) {
 	var pass = " "
 
 	function getItemData(callback){
-		console.log('getItemData start')
+		console.log('getItemData start (6)')
 
 		client.hgetall(haveId , function(err, object) {
 
@@ -108,45 +119,53 @@ app.get('/', function (req, res) {
 	    	callback()
 		});
 		
-		console.log('getItemData end')
+		console.log('getItemData end (6)')
 	}
 	
 	//Get the values from the url ('name'):
 
 	function setVal(callback){
-		console.log('setVal start')
+		console.log('setVal start (2)')
 		
 		function processCall(){
-			console.log('processCall start')
+			console.log('processCall start (4)')
 
-			function pullQuery(array, id) {
+			function checkIfOnDB(array, id) {
 			    return array.indexOf(id) > -1;
 			}
 
-			console.log('value of allItems is: ' +allItems+ ' and haveId is ' + haveId + 'pullQuery is ' + pullQuery(allItems,haveId))
+			console.log('value of allItems is: ' +allItems+ ' and haveId is ' + haveId + ' checkIfOnDB is ' + checkIfOnDB(allItems,haveId))
 
-			if(pullQuery(allItems,haveId)){
-				getItemData(setValues)
-				function setValues(){
-					que = item.question
-					ans = item.answer
-					pg_img = item.image
-					console.log('data loaded, id: ' + haveId)
-					callback(setPagesNotyet)
+			function createOrPull(callback){
+				if(checkIfOnDB(allItems,haveId)){
+					console.log('query excist (5)')
+					getItemData(setValues)
+					function setValues(){
+						console.log('setValues start (7)')
+						que = item.question
+						ans = item.answer
+						pg_img = item.image
+						console.log('data loaded, id: ' + haveId)
+						chooseIcon()
+						console.log('setValues end (7)')
+						callback()
+					}
+				}
+				else{
+					console.log('query not excist (5)')
+					id  = req.query.id
+					que = req.query.que
+					ans = req.query.ans
+					pg_img = req.query.pg_img
+					pass = "temp" //req.query.pass
+					chooseIcon()
+					writeData(id, que, ans, pg_img, pass, callback)
 				}
 			}
-			else{
-				id  = req.query.id
-				que = req.query.que
-				ans = req.query.ans
-				pg_img = req.query.pg_img
-				pass = "temp" //req.query.pass
 
-				writeData(id, que, ans, pg_img, pass)
-				console.log('data created!, id: ' + id)
-				callback(setPagesNotyet)
-			}
+		createOrPull(setPagesNotyet)
 		console.log('processCall end')
+
 		}
 		getAllData(processCall)
 		console.log('setVal end')
@@ -210,7 +229,7 @@ app.get('/', function (req, res) {
 			theme_color_cls = 'body-notyet-yes'
 			theme_color_btn = 'btn-yes'
 			console.log('--if--')
-			callback()
+			// callback()
 			// return
 		}
 		else{
@@ -218,7 +237,7 @@ app.get('/', function (req, res) {
 			theme_color_cls = 'body-notyet-no'
 			theme_color_btn = 'btn-no'
 			console.log('--else--')
-			callback()
+			// callback()
 			return
 		}
 	}
@@ -226,12 +245,15 @@ app.get('/', function (req, res) {
 	//in case no question is given, load home page:
 	if(typeof haveId == 'undefined') {
 		// setVal()
+		console.log('There isnt Id (1)')
 		setPagesLand();
 	}
 
 	//send variables to template file and render result:
 	else{
+		console.log('There is Id (1)')
 		setVal(chooseIcon)
+		
 	}
 })
 
