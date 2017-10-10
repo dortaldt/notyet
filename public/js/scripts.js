@@ -38,6 +38,7 @@ var animateText = function() {
 				noText.className = ''
 				images[0].className = 'no-image'
 				images[1].className += ' hide'
+				location.reload();
 			},100)
 		},2000);
 	},2000);
