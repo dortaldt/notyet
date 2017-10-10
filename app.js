@@ -86,6 +86,8 @@ var pg_des = "Because I'm tired answering.."
 var spinner = '/assets/loader.svg'
 var bg_img = 'background-image:url(/assets/bg_shapes.svg)'
 var logo = '/assets/home_logo.svg'
+var share_icon = '/assets/share_icon.svg'
+var update_icon = '/assets/update_icon.svg'
 
 
 /***********************************/
@@ -205,6 +207,8 @@ app.get('/', function (req, res) {
 	  			theme_color: theme_color_cls,
 	  			theme_btn: theme_color_btn,
 	  			spinner: spinner,
+	  			share_icon: share_icon ,
+	  			update_icon: update_icon,
 	  			changeId: haveId	
 			}
 		)

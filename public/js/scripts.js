@@ -123,13 +123,17 @@ function sendId() {
 }
 
 function showShare(){
+	var background = document.getElementById('dark-back')
 	var box = document.getElementById('share-box')
 	box.className = 'card'
+	background.className = ' '
 }
 
 function hideShare(){
+	var background = document.getElementById('dark-back')
 	var box = document.getElementById('share-box')
 	box.className += ' hide'
+	background.className += ' hide'
 }
 
 

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="24px" height="24px" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 46.2 (44496) - http://www.bohemiancoding.com/sketch -->
+    <title>update_icon</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="iPhone-7-buttons" transform="translate(-215.000000, -542.000000)" stroke-width="2" stroke="#7C7C7C">
+            <g id="Group-5" transform="translate(125.000000, 542.000000)">
+                <g id="Group-3" transform="translate(77.000000, 0.000000)">
+                    <g id="update_icon" transform="translate(13.000000, 0.000000)">
+                        <g id="yes-copy">
+                            <circle id="Oval" cx="11.8548387" cy="11.8548387" r="10.8548387"></circle>
+                            <polyline id="Path-2" stroke-linecap="round" points="7 11.9419035 9.91927591 15.6209677 17.5846774 8"></polyline>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>
