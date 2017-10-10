@@ -192,8 +192,8 @@ app.get('/', function (req, res) {
 		var landingPage = pug.renderFile( __dirname + '/views' + '/home_page.pug',
 			{
 				page_title: "Welcome to Not Yet",
-				page_img: pg_img,
-	  			page_des: pg_des,
+				page_img: '../assets/and_now.png',
+	  			page_des: "Are we there yet? No! Give others link and stop getting the same answer",
 	  			page_url: pg_url,
 	  			background_image: bg_img,
 	  			logo: logo,
