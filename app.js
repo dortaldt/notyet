@@ -5,25 +5,37 @@ var fs = require('fs');
 var shortid = require('shortid'); 
 
 
-//temp value for redis connection -> should change for deploy
-var tempRedis = {}
-tempRedis.PORT = 41519
-tempRedis.HOST = 'ec2-34-251-131-150.eu-west-1.compute.amazonaws.com'
-tempRedis.PASS = 'pc80586139fc45971c4b8c02148492bf50f23b22702d0757fa9125ee90df860b3'
+/*************Local use only************************/
+
+//temp value for redis connection -> should change for deploy:
+
+// var tempRedis = {}
+// tempRedis.PORT = 41519
+// tempRedis.HOST = 'ec2-34-251-131-150.eu-west-1.compute.amazonaws.com'
+// tempRedis.PASS = 'pc80586139fc45971c4b8c02148492bf50f23b22702d0757fa9125ee90df860b3'
 
 
-//connecting to Redis DB, should get URL_ when goes production 
-var client = require('redis').createClient(tempRedis.PORT, tempRedis.HOST);
-client.auth(tempRedis.PASS);
+//connecting to Redis DB, should get URL_ when goes production:
+
+// var client = require('redis').createClient(tempRedis.PORT, tempRedis.HOST);
+// client.auth(tempRedis.PASS);
+
+
+var client = require('redis').createClient(process.env.REDIS_URL);
+
 
 client.on('connect', function() {
 	console.log('connected');
 });
 
-///////////////////Erase all data:///////////////////////////
-client.flushdb( function (err, succeeded) {
-    console.log('delete: ' + succeeded); // will be true if successfull
-});
+
+
+
+/*********************Erase all data on app restart:********************************/
+// client.flushdb( function (err, succeeded) {
+//     console.log('delete: ' + succeeded); // will be true if successfull
+// });
+
 
 
 

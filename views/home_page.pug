@@ -15,13 +15,14 @@ html
             label(for='question') 
               h6 What is the question they're keep nagging you about?
             input#question(type='text', name='que', onfocus="if(this.value == 'Are we there yet??') { this.value = ''; }", value='Are we there yet??' placeholder="Type your question here")
-            input#add-image(type='text', name='pg_img', onfocus="if(this.value == 'Paste preview image url') { this.value = ''; }", value='Paste preview image url' placeholder="Paste preview image url")
             .lables
-              span And the answer is: 
-              lable #[input#ans1(type='radio', name='ans', value="true" checked)] Yes!
-              lable #[input#ans2(type='radio', name='ans', value="false")] No!
+              span 
+                h6 And the answer is: 
+              label #[input#ans1(type='radio', name='ans', value="true" checked)] Yes!
+              label #[input#ans2(type='radio', name='ans', value="false")] No!
               input(type = "hidden" name = "id" value = id)
-            input#select-pass(type='text', name='pass', onfocus="if(this.value == 'Choose pass to change status') { this.value = ''; }", placeholder="Choose pass to change status")
+            input#add-image(type='text', name='pg_img', placeholder="Paste preview image url")
+            input#select-pass(type='text', name='pass', placeholder="Choose pass to change status")
             button#btn-home(type='submit', form='form1', value='Submit') Create page!
         footer
             | created with

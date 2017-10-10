@@ -55,6 +55,7 @@ body {
   box-shadow: 1px 3px 6px rgba(0, 0, 0, 0.25); }
 
 #question {
+  font-size: 1.5rem;
   margin-top: 16px;
   margin-bottom: 16px; }
 
@@ -107,15 +108,18 @@ input[type=submit] {
     color: #6b6b6b; }
 
 label {
-  display: block; }
+  display: inline-block; }
 
 .lables {
   margin: 1rem 0; }
+  .lables label {
+    font-size: 1.5rem;
+    margin-right: 1rem; }
 
 input[type=text] {
   background-color: transparent;
   display: block;
-  font-size: 1.1rem;
+  font-size: 1rem;
   line-height: 1.5rem;
   width: 100%;
   border-bottom: 2px solid #cccccc;
@@ -156,6 +160,9 @@ input[type=radio] {
   width: 100%;
   height: 100%;
   background-color: rgba(0, 0, 0, 0.68); }
+
+.buttons {
+  text-align: center; }
 
 .dis-flex {
   display: flex; }
@@ -289,7 +296,10 @@ footer {
     line-height: 2rem; }
 
   h6 {
-    font-size: 1rem; }
+    font-size: 0.9rem; }
+
+  input[type=text] {
+    font-size: 0.9rem; }
 
   .content {
     max-width: 100%;
@@ -305,13 +315,26 @@ footer {
     .title-que-cont img {
       width: 70px; }
 
+  .flat-btn {
+    font-size: 0.8rem; }
+
+  #question {
+    font-size: 1.5rem;
+    margin-top: 8px;
+    margin-bottom: 8px; }
+
   /************************ */
   /********* Form ********* */
-  /************************ */
-  form {
-    margin: 0.5rem; }
+  /************************ */ }
+@media only screen and (max-device-width: 321px) {
+  .no-images {
+    width: 30px;
+    height: 30px; }
 
-  label {
-    display: block; } }
+  button {
+    margin: 0 auto; }
+
+  .flat-btn {
+    font-size: 0.6rem; } }
 
 /*# sourceMappingURL=styles.css.map */

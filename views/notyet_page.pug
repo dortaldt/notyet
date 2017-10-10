@@ -29,23 +29,23 @@ html
           .links
             .full-width.btn-cont
               button(class = theme_btn onclick='animateText()') And now??
-            div
-              #share-box.card.hide
-                .dis-flex.flex-col
-                  #share-link 
-                  div
-                    h6 Copy link:
-                  .link-text notyetapp.herokuapp.com/?id=#{changeId}
-                  .flat-btn(onclick = 'hideShare()' ) Close
+          .buttons
+            #share-box.card.hide
+              .dis-flex.flex-col
+                #share-link 
+                div
+                  h6 Copy link:
+                .link-text www.notyetapp.herokuapp.com/?id=#{changeId}
+                .flat-btn(onclick = 'hideShare()' ) Close
 
-              span.flat-btn(onclick='showShare()') 
-                img(src= share_icon )
-                div Share
+            span.flat-btn(onclick='showShare()') 
+              img(src= share_icon )
+              div Share
 
-              span.flat-btn
-                a(href='/change?id=' + changeId)
-                  img(src= update_icon)
-                  div Update
+            span.flat-btn
+              a(href='/change?id=' + changeId)
+                img(src= update_icon)
+                div Update
             
 
           footer

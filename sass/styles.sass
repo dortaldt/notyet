@@ -72,6 +72,7 @@ body
   box-shadow: 1px 3px 6px rgba(0, 0, 0, 0.25)
 
 #question
+  font-size: 1.5rem
   margin-top: $large
   margin-bottom: $large
 
@@ -126,15 +127,18 @@ input[type=submit]
     color: lighten($type-color, 20%)
 
 label
-  display: block
+  display: inline-block
 
 .lables
   margin: 1rem 0
+  label
+    font-size: 1.5rem
+    margin-right: 1rem
 
 input[type=text]
   background-color: transparent
   display: block
-  font-size: 1.1rem
+  font-size: 1rem
   line-height: 1.5rem
   width: 100%
   border-bottom: 2px solid #cccccc
@@ -176,6 +180,9 @@ input[type=radio]
   width: 100%
   height: 100%
   background-color: rgba(0, 0, 0, 0.68)
+
+.buttons
+  text-align: center
 
 .dis-flex
   display: flex
@@ -304,13 +311,17 @@ footer
   text-align: center
   color: lighten($type-color, 30)
 
+//Mobile
 @media only screen and (max-device-width: 770px)
   h1
     font-size: 2.5rem
     line-height: 2rem
 
   h6
-    font-size: 1rem
+    font-size: 0.9rem
+
+  input[type=text]
+    font-size: 0.9rem
 
   .content
     max-width: 100%
@@ -326,11 +337,26 @@ footer
     img 
       width: 70px
 
+  .flat-btn
+    font-size: 0.8rem
+
+  #question
+    font-size: 1.5rem
+    margin-top: $meduim
+    margin-bottom: $meduim
+
   /*************************/
   /********* Form **********/
   /*************************/
-  form
-    margin: 0.5rem
 
-  label
-    display: block
+//Iphone 5
+@media only screen and (max-device-width: 321px) 
+  .no-images
+    width: 30px
+    height: 30px
+
+  button
+    margin: 0 auto
+
+  .flat-btn
+    font-size: 0.6rem
