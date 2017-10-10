@@ -1,20 +1,26 @@
 html
   include includes/head.pug
   body.body-home
-    .tri(style = background_image )
-        .content.dis-flex.card
-          div
-            form#form2.dis-flex.flex-col
-              label(for='question_id') 
-                h6 Page ID:
-              input#question_id(type='text', name='page_id', onfocus="if(this.value == 'Enter your page ID here') { this.value = ''; }", value= idLoad placeholder="Enter your page ID here")
-              input#pass(type='text', name='page_pass', onfocus="if(this.value == 'Enter your password here') { this.value = ''; }", value='Enter your password here' placeholder="Enter your password here")
-              .lables
-                span Change answer to: 
-                lable #[input#ans1(type='radio', name='ans', value="true" checked)] Yes!
-                lable #[input#ans2(type='radio', name='ans', value="false")] No!
-              button#btn-home(type='submit', form='form2', value='Submit') Change status
-          footer
-            | created by 
-            a(href='http://www.dordesign.com/index.html#page-2')
-              b Dor Tal
+    .tri(style= background_image )
+      .content.dis-flex.card
+        .site-header.dis-flex
+          .title-que-cont.dis-flex
+            span.title-que
+             h1 Update your status
+        div
+          form#form2.dis-flex.flex-col
+            label(for='question_id') 
+              h6 Your question ID:
+            input#question_id(type='text', name='page_id', onfocus="if(this.value == 'Enter your page ID here') { this.value = ''; }", value= idLoad placeholder="Enter your page ID here")
+            label(for='pass') 
+              h6 Secret password
+            input#pass(type='text', name='page_pass', onfocus="if(this.value == 'Enter your password here') { this.value = ''; }", value='Enter your password here' placeholder="Enter your password here")
+            .lables
+              span Change answer to: 
+              lable #[input#ans1(type='radio', name='ans', value="true" checked)] Yes!
+              lable #[input#ans2(type='radio', name='ans', value="false")] No!
+            button#btn-home(type='submit', form='form2', value='Submit') Change status
+        footer
+          | created by 
+          a(href='http://www.dordesign.com/index.html#page-2')
+            b Dor Tal
