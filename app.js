@@ -21,6 +21,8 @@ var shortid = require('shortid');
 // client.auth(tempRedis.PASS);
 
 
+
+//live var:
 var client = require('redis').createClient(process.env.REDIS_URL);
 
 
@@ -284,6 +286,7 @@ app.get('/change', function (req, res) {
 	var idSub
 	var passSub
 	var newStat
+	var newQue
 	var passDB
 	// var idDB
 	var oldStat
@@ -294,6 +297,7 @@ app.get('/change', function (req, res) {
 			if(object != null){
 				passDB = object.pass
 				oldStat = object.answer
+				oldQue = object.question
 				callback()
 			}
 			else {
@@ -308,6 +312,7 @@ app.get('/change', function (req, res) {
 		idSub = req.query.page_id
 		passSub = req.query.page_pass
 		newStat = req.query.ans
+		newQue = req.query.que
 		callback(checkValid)
 	}
 
@@ -323,7 +328,8 @@ app.get('/change', function (req, res) {
 
 	function writeNewStat(){
 		client.hmset(idSub,{
-		'answer': newStat
+		'answer': newStat,
+		'question': newQue
 		});
 		console.log('Status changed to ' + newStat)
 	}
