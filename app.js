@@ -102,6 +102,7 @@ var bg_img = 'background-image:url(/assets/bg_shapes.svg)'
 var logo = '/assets/home_logo.svg'
 var share_icon = '/assets/share_icon.svg'
 var update_icon = '/assets/update_icon.svg'
+var fav = '/assets/and_now.png'
 
 
 /***********************************/
@@ -195,6 +196,7 @@ app.get('/', function (req, res) {
 			{
 				page_title: "Welcome to Not Yet",
 				page_img: 'https://notyetapp.herokuapp.com' + '/assets/and_now.png',
+				fav: 'https://notyetapp.herokuapp.com' + '/assets/and_now.png',
 	  			page_des: "Are we there yet? No! Give others link and stop getting the same question",
 	  			page_url: pg_url,
 	  			background_image: bg_img,
@@ -212,6 +214,7 @@ app.get('/', function (req, res) {
 	  		{
 	  			question:que,
 	  			answer: ans,
+	  			fav: 'https://notyetapp.herokuapp.com' + '/assets/and_now.png',
 	  			page_title: pg_title, 
 	  			page_img: pg_img,
 	  			page_des: pg_des,
