@@ -212,9 +212,8 @@ app.get('/', function (req, res) {
 		console.log('setPagesNotyet start')
 	  	var notyetPage = pug.renderFile( __dirname + '/views' + '/notyet_page.pug',
 	  		{
-	  			question:que,
+	  			question: que,
 	  			answer: ans,
-	  			fav: 'https://notyetapp.herokuapp.com' + '/assets/and_now.png',
 	  			page_title: pg_title, 
 	  			page_img: pg_img,
 	  			page_des: pg_des,
@@ -226,7 +225,8 @@ app.get('/', function (req, res) {
 	  			spinner: spinner,
 	  			share_icon: share_icon ,
 	  			update_icon: update_icon,
-	  			changeId: haveId	
+	  			changeId: haveId,
+	  			fav: 'https://notyetapp.herokuapp.com' + '/assets/and_now.png'	
 			}
 		)
 		res.send(notyetPage)
