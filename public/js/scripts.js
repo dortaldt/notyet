@@ -138,18 +138,30 @@ function hideShare(){
 	background.className += ' hide'
 }
 
+var current
 // share on FB
 window.onload = function(){
-	document.getElementById('shareBtn').onclick = function() {
-		console.log('shareClick')
+
+	var getLink = function(callback){
 		current = window.location.href
-		ga('send', 'event', 'Share Facebook', 'click')
-	  FB.ui({
-	    method: 'share',
-	    display: 'popup',
-	    herf: current,
-	  }, function(response){});
+		console.log(current)
+		callback()
 	}
+
+	var setFB = function(){
+		console.log('setFb started with ' + current )
+		document.getElementById('shareBtn').onclick = function() {
+		console.log('setFb call with ' + current )
+		ga('send', 'event', 'Share Facebook', 'click')
+		  FB.ui({
+		    method: 'share',
+		    display: 'popup',
+		    herf: current,
+		  }, function(response){});
+		}
+	}
+
+	getLink(setFB)
 }
 
 
