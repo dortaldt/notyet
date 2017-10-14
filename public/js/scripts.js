@@ -156,7 +156,7 @@ window.onload = function(){
 		  FB.ui({
 		    method: 'share',
 		    display: 'popup',
-		    herf: current,
+		    href: current,
 		  }, function(response){});
 		}
 	}
