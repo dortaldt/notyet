@@ -124,6 +124,7 @@ function sendId() {
 }
 
 function showShare(){
+	ga('send', 'event', 'Share popup', 'click')
 	var background = document.getElementById('dark-back')
 	var box = document.getElementById('share-box')
 	box.className = 'card'
@@ -137,12 +138,19 @@ function hideShare(){
 	background.className += ' hide'
 }
 
-
-
-
-
-
-
+// share on FB
+window.onload = function(){
+	document.getElementById('shareBtn').onclick = function() {
+		console.log('shareClick')
+		current = window.location.href
+		ga('send', 'event', 'Share Facebook', 'click')
+	  FB.ui({
+	    method: 'share',
+	    display: 'popup',
+	    herf: current,
+	  }, function(response){});
+	}
+}
 
 
 

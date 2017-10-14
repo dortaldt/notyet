@@ -90,6 +90,10 @@ input[type=submit] {
 .btn-yes {
   background-color: #34b397; }
 
+#sharebtn {
+  font-size: 1rem;
+  color: #107eff; }
+
 .btn-cont {
   text-align: center; }
 

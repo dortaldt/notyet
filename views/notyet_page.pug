@@ -1,6 +1,23 @@
 html
   include includes/head.pug
   body(class = theme_color)
+    #fb-root
+    script.
+      window.fbAsyncInit = function() {
+      FB.init({
+      appId      : '240105459848939',
+      xfbml      : true,
+      version    : 'v2.10'
+      });
+      FB.AppEvents.logPageView();
+      };
+      (function(d, s, id){
+      var js, fjs = d.getElementsByTagName(s)[0];
+      if (d.getElementById(id)) {return;}
+      js = d.createElement(s); js.id = id;
+      js.src = "//connect.facebook.net/en_US/sdk.js";
+      fjs.parentNode.insertBefore(js, fjs);
+      }(document, 'script', 'facebook-jssdk'));
     #dark-back.hide
     .tri(style = background_image )
         .content.dis-flex.card
@@ -36,6 +53,10 @@ html
                 div
                   h6 Copy link:
                 .link-text notyetapp.herokuapp.com/?id=#{changeId}
+                div
+                  h6 Or:
+                #shareBtn.flat-btn
+                  | Share on Facebook
                 .flat-btn(onclick = 'hideShare()' ) Close
 
             span.flat-btn(onclick='showShare()') 
@@ -49,9 +70,5 @@ html
             
 
           footer
-            | created with
             a(href='/')
-              b  NotYet
-            |  by 
-            a(href='http://www.dordesign.com/index.html#page-2')
-              b Dor Tal
+              b  Create new question!
