@@ -18,7 +18,10 @@
   },
   "homepage": "https://github.com/dortaldt/netyet#readme",
   "dependencies": {
-    "express": "^4.16.0",
-    "redis": "^2.8.0"
+    "express": "^4.17.1",
+    "jade": "^1.11.0",
+    "pug": "^2.0.3",
+    "redis": "^2.8.0",
+    "shortid": "^2.2.14"
   }
 }
