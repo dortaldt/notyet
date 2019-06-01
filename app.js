@@ -17,8 +17,8 @@ var shortid = require('shortid');
 
 // connecting to Redis DB, should get URL_ when goes production:
 
-var client = require('redis').createClient(tempRedis.PORT, tempRedis.HOST);
-client.auth(tempRedis.PASS);
+// var client = require('redis').createClient(tempRedis.PORT, tempRedis.HOST);
+// client.auth(tempRedis.PASS);
 
 // ************************************************************
 
