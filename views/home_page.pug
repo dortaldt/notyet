@@ -3,32 +3,33 @@ html
   body.body-home
     .tri(style= background_image )
       .content.dis-flex.card
-        .site-header.dis-flex
-          .title-que-cont.dis-flex
-            span.title-que
-              h1 not
-                br
-                | yet
-              img(src = logo)
-        div
-          form#form1.dis-flex.flex-col(action = '/?id=' + id )
-            label(for='question') 
-              h6 What is the question they're keep nagging you about?
-            input#question(type='text', name='que', onfocus="if(this.value == 'Are we there yet??') { this.value = ''; }", value='Are we there yet??' placeholder="Type your question here")
-            .lables
-              span 
-                h6 And the answer is: 
-              label #[input#ans1(type='radio', name='ans', value="true" checked)] Yes!
-              label #[input#ans2(type='radio', name='ans', value="false")] No!
-              input(type = "hidden" name = "id" value = id)
-            input#add-image(type='text', name='pg_img', placeholder="Paste preview image url")
-            input#select-pass(type='text', name='pass', placeholder="Choose pass to change status")
-            button#btn-home(type='submit', form='form1', value='Submit') Create page!
+        .card-content
+          .site-header.dis-flex
+            .title-que-cont.dis-flex
+              span.title-que
+                h1 not
+                  br
+                  | yet
+                img(src = logo)
+          div
+            form#form1.dis-flex.flex-col(action = '/?id=' + id )
+              label(for='question') 
+                h6 The question they're keep nagging you about:
+              input#question(type='text', name='que', onfocus="if(this.value == 'Are we there yet??') { this.value = ''; }" placeholder="Type your question here")
+              .lables
+                span 
+                  h6 And the answer is: 
+                label #[input#ans1(type='radio', name='ans', value="true" checked)] Yes!
+                label #[input#ans2(type='radio', name='ans', value="false")] No!
+                input(type = "hidden" name = "id" value = id)
+              input.details#add-image(type='text', name='pg_img', placeholder="Social preview image url (optional)")
+              input.details#select-pass(type='text', name='pass', placeholder="Password for changing status (optional)")
+              button#btn-home(type='submit', form='form1', value='Submit') Create page
         footer
-            | created with
+            | created with 
             a(href='/')
-              b  NotYet
+              | NotYet
             |  by 
             a(href='http://www.dordesign.com/index.html#page-2')
-              b Dor Tal
+              | Dor Tal
 

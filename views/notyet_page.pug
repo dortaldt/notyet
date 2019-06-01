@@ -33,9 +33,9 @@ html
                     img.no-image.spin.hide(src= spinner)
                   span#no-text 
                   if answer == 'true'
-                    |Yes!
+                    span.yes-no Yes!
                   else
-                    |No!
+                    span.yes-no No!
                 .update-wrap.full-width
                   span.update-cont
                     span#last Last update: 
@@ -61,14 +61,15 @@ html
 
             span.flat-btn(onclick='showShare()') 
               img(src= share_icon )
-              div Share
+              div.flat-text Share
 
             span.flat-btn
               a(href='/change?id=' + changeId)
                 img(src= update_icon)
-                div Update
+                div.flat-text Update
             
 
           footer
-            a(href='/')
-              b  Create new question!
+            button.second-cta
+              a(href='/')
+                | Create a question!

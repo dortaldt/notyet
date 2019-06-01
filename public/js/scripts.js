@@ -12,7 +12,7 @@ var time = function(){
 var printUpdate = function() {
 	var current = time();
 	var oldTime = document.getElementById('update-time');
-	oldTime.innerHTML = current;
+	oldTime.innerHTML = current
 }
 
 
@@ -42,10 +42,6 @@ var animateText = function() {
 			},100)
 		},2000);
 	},2000);
-}
-
-window.onload = function() {
-	printUpdate()
 }
 
 var copyTextToClipboard = function(text) {
@@ -161,7 +157,8 @@ window.onload = function(){
 		}
 	}
 
-	getLink(setFB)
+	getLink(setFB);
+	printUpdate();
 }
 
 

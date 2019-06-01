@@ -5,25 +5,28 @@ var fs = require('fs');
 var shortid = require('shortid'); 
 
 
-/*************Local use only************************/
+/*************Local use only*********************************/
 
 // temp value for redis connection -> should change for deploy:
 
 // var tempRedis = {}
-// tempRedis.PORT = 41519
-// tempRedis.HOST = 'ec2-34-251-131-150.eu-west-1.compute.amazonaws.com'
-// tempRedis.PASS = 'pc80586139fc45971c4b8c02148492bf50f23b22702d0757fa9125ee90df860b3'
+// tempRedis.PORT = 10759
+// tempRedis.HOST = 'ec2-99-80-99-128.eu-west-1.compute.amazonaws.com'
+// tempRedis.PASS = 'pa864f41fbd35af65df50aeea6fa4909ec620e41525b2384c820ec12b24e471ba'
 
 
 // connecting to Redis DB, should get URL_ when goes production:
 
-// var client = require('redis').createClient(tempRedis.PORT, tempRedis.HOST);
-// client.auth(tempRedis.PASS);
+var client = require('redis').createClient(tempRedis.PORT, tempRedis.HOST);
+client.auth(tempRedis.PASS);
 
+// ************************************************************
 
 
 // //live var:
 var client = require('redis').createClient(process.env.REDIS_URL);
+
+// *******************************
 
 
 client.on('connect', function() {
